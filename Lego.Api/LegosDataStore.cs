@@ -2,13 +2,34 @@
 
 namespace Lego.Api
 {
+    /// <summary>
+    /// Temporary data store 
+    /// </summary>
     public class LegosDataStore
     {
+        /// <summary>
+        /// List of Lego sets
+        /// </summary>
         public List<SetDto> Sets { get; set; }
+
+        /// <summary>
+        /// List of Lego parts
+        /// </summary>
         public List<PartDto> Parts { get; set; }
+
+        /// <summary>
+        /// List of themes
+        /// </summary>
         public List<ThemeDto> Themes { get; set; }
+
+        /// <summary>
+        /// List of collections
+        /// </summary>
         public List<CollectionDto> Collections { get; set; }
 
+        /// <summary>
+        /// Temporary data store constructor
+        /// </summary>
         public LegosDataStore() 
         {
             Parts = new List<PartDto>()

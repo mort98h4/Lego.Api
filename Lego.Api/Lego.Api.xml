@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lego.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Lego.Api.Controllers.SetsController">
+            <summary>
+            API Controller of Lego sets
+            </summary>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetsController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SetsController},Lego.Api.LegosDataStore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="legosDataStore"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetsController.GetSets">
+            <summary>
+            Get all Lego sets
+            </summary>
+            <returns>A list of sets</returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetsController.GetSet(System.Int32)">
+            <summary>
+            Get a Lego set by id
+            </summary>
+            <param name="setId">The id of the set to get</param>
+            <returns>A set</returns>
+        </member>
+        <member name="T:Lego.Api.Models.CollectionDto">
+            <summary>
+            A collection of Lego sets under a specific theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.CollectionDto.Id">
+            <summary>
+            The id of the collection
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.CollectionDto.Name">
+            <summary>
+            The name of the collection
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.CollectionDto.Description">
+            <summary>
+            The description of the collection
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.PartDto">
+            <summary>
+            A Lego part
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PartDto.Id">
+            <summary>
+            The id of the part
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PartDto.PartNo">
+            <summary>
+            The part number of the part
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PartDto.Color">
+            <summary>
+            The color of the part
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PartDto.Description">
+            <summary>
+            The description of the part
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetDto">
+            <summary>
+            A Lego set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Id">
+            <summary>
+            The id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Theme">
+            <summary>
+            The theme of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Collection">
+            <summary>
+            The collection of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.NoOfParts">
+            <summary>
+            The number of parts included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.Sealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.HasMissingParts">
+            <summary>
+            If the set has missing parts
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.NoOfMissingParts">
+            <summary>
+            The number of missing parts
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetDto.MissingParts">
+            <summary>
+            A list of the missing parts
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.ThemeDto">
+            <summary>
+            A specific theme of Lego sets 
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeDto.Id">
+            <summary>
+            The id of the theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeDto.Name">
+            <summary>
+            The name of the theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeDto.Description">
+            <summary>
+            The description of the theme
+            </summary>
+        </member>
+    </members>
+</doc>
