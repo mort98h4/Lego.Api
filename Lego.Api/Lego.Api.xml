@@ -30,6 +30,36 @@
             <param name="setId">The id of the set to get</param>
             <returns>A set</returns>
         </member>
+        <member name="T:Lego.Api.LegosDataStore">
+            <summary>
+            Temporary data store 
+            </summary>
+        </member>
+        <member name="P:Lego.Api.LegosDataStore.Sets">
+            <summary>
+            List of Lego sets
+            </summary>
+        </member>
+        <member name="P:Lego.Api.LegosDataStore.Parts">
+            <summary>
+            List of Lego parts
+            </summary>
+        </member>
+        <member name="P:Lego.Api.LegosDataStore.Themes">
+            <summary>
+            List of themes
+            </summary>
+        </member>
+        <member name="P:Lego.Api.LegosDataStore.Collections">
+            <summary>
+            List of collections
+            </summary>
+        </member>
+        <member name="M:Lego.Api.LegosDataStore.#ctor">
+            <summary>
+            Temporary data store constructor
+            </summary>
+        </member>
         <member name="T:Lego.Api.Models.CollectionDto">
             <summary>
             A collection of Lego sets under a specific theme
