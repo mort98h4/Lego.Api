@@ -61,5 +61,96 @@ namespace Lego.Api.Controllers
 
             return Ok(set);
         }
+
+        /// <summary>
+        /// Create a new Lego set
+        /// </summary>
+        /// <param name="set">The set for creation</param>
+        /// <returns>The newly created set</returns>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public ActionResult<SetDto> CreateSet(SetForCreationDto set)
+        {
+            var maxSetId = _legosDataStore.Sets.Max(s => s.Id);
+
+            var finalSet = new SetDto()
+            {
+                Id = ++maxSetId,
+                ModelNo = set.ModelNo,
+                Name = set.Name,
+                Theme = set.Theme,
+                Collection = set.Collection,
+                NoOfParts = set.NoOfParts,
+                Description = set.Description,
+                Sealed = set.Sealed,
+                HasBox = set.HasBox,
+                HasMissingParts = set.HasMissingParts,
+                MissingParts = set.MissingParts
+            };
+
+            _legosDataStore.Sets.Add(finalSet);
+
+            return CreatedAtRoute("GetSet", new
+            {
+                setId = finalSet.Id
+            }, finalSet);
+        }
+
+        /// <summary>
+        /// Update a Lego set
+        /// </summary>
+        /// <param name="setId">The id of the set to update</param>
+        /// <param name="set">The set for updating</param>
+        /// <returns>The updated set</returns>
+        [HttpPut("{setId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<SetDto> UpdateSet(int setId, SetForUpdatingDto set)
+        {
+            var setFromStore = _legosDataStore.Sets.FirstOrDefault(s => s.Id == setId);
+            if (setFromStore == null)
+            {
+                _logger.LogInformation($"Set with id '{setId}' was not found.");
+                return NotFound();
+            } 
+
+            setFromStore.ModelNo = set.ModelNo ?? setFromStore.ModelNo;
+            setFromStore.Name = set.Name ?? setFromStore.Name;
+            setFromStore.Theme = set.Theme ?? setFromStore.Theme;
+            setFromStore.Collection = set.Collection ?? setFromStore.Collection;
+            setFromStore.Description = set.Description ?? setFromStore.Description;
+            setFromStore.NoOfParts = set.NoOfParts ?? setFromStore.NoOfParts;
+            setFromStore.Sealed = set.Sealed ?? setFromStore.Sealed;
+            setFromStore.HasBox = set.HasBox ?? setFromStore.HasBox;
+            setFromStore.HasMissingParts = set.HasMissingParts ?? setFromStore.HasMissingParts;
+            setFromStore.MissingParts = set.MissingParts ?? setFromStore.MissingParts;
+
+            return Ok(setFromStore);
+        }
+
+        /// <summary>
+        /// Delete a Lego set
+        /// </summary>
+        /// <param name="setId">The id of the set for deletion</param>
+        /// <returns>No content</returns>
+        [HttpDelete("{setId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult DeleteSet(int setId)
+        {
+            var setFromStore = _legosDataStore.Sets.FirstOrDefault(s => s.Id == setId);
+            if (setFromStore == null)
+            {
+                _logger.LogInformation($"Set with id '{setId}' was not found.");
+                return NotFound();
+            }
+
+            _legosDataStore.Sets.Remove(setFromStore);
+
+            return NoContent();
+        }
     }
 }

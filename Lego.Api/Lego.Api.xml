@@ -30,6 +30,28 @@
             <param name="setId">The id of the set to get</param>
             <returns>A set</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SetsController.CreateSet(Lego.Api.Models.SetForCreationDto)">
+            <summary>
+            Create a new Lego set
+            </summary>
+            <param name="set">The set for creation</param>
+            <returns>The newly created set</returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetsController.UpdateSet(System.Int32,Lego.Api.Models.SetForUpdatingDto)">
+            <summary>
+            Update a Lego set
+            </summary>
+            <param name="setId">The id of the set to update</param>
+            <param name="set">The set for updating</param>
+            <returns>The updated set</returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetsController.DeleteSet(System.Int32)">
+            <summary>
+            Delete a Lego set
+            </summary>
+            <param name="setId">The id of the set for deletion</param>
+            <returns>No content</returns>
+        </member>
         <member name="T:Lego.Api.LegosDataStore">
             <summary>
             Temporary data store 
@@ -166,6 +188,116 @@
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetDto.MissingParts">
+            <summary>
+            A list of the missing parts
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetForCreationDto">
+            <summary>
+            A Lego set for creation
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.Theme">
+            <summary>
+            The theme of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.Collection">
+            <summary>
+            The collection of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.NoOfParts">
+            <summary>
+            The number of parts included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.Sealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.HasMissingParts">
+            <summary>
+            If the set has missing parts
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForCreationDto.MissingParts">
+            <summary>
+            A list of the missing parts
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetForUpdatingDto">
+            <summary>
+            A Lego set for updating
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.Theme">
+            <summary>
+            The theme of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.Collection">
+            <summary>
+            The collection of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfParts">
+            <summary>
+            The number of parts included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.Sealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.HasMissingParts">
+            <summary>
+            If the set has missing parts
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.MissingParts">
             <summary>
             A list of the missing parts
             </summary>
