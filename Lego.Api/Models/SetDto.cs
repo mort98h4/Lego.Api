@@ -53,7 +53,13 @@
         /// <summary>
         /// If the set has missing parts
         /// </summary>
-        public bool HasMissingParts { get; set; } = false;
+        public bool HasMissingParts
+        {
+            get
+            {
+                return MissingParts?.Count != 0;
+            }
+        }
 
         /// <summary>
         /// The number of missing parts

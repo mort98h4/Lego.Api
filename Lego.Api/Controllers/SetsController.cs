@@ -85,7 +85,6 @@ namespace Lego.Api.Controllers
                 Description = set.Description,
                 Sealed = set.Sealed,
                 HasBox = set.HasBox,
-                HasMissingParts = set.HasMissingParts,
                 MissingParts = set.MissingParts
             };
 
@@ -124,7 +123,6 @@ namespace Lego.Api.Controllers
             setFromStore.NoOfParts = set.NoOfParts ?? setFromStore.NoOfParts;
             setFromStore.Sealed = set.Sealed ?? setFromStore.Sealed;
             setFromStore.HasBox = set.HasBox ?? setFromStore.HasBox;
-            setFromStore.HasMissingParts = set.HasMissingParts ?? setFromStore.HasMissingParts;
             setFromStore.MissingParts = set.MissingParts ?? setFromStore.MissingParts;
 
             return Ok(setFromStore);

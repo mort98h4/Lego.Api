@@ -106,7 +106,6 @@ namespace Lego.Api
                     Description = "A display piece of a Republic Era assault ship.",
                     Sealed = false,
                     HasBox = true,
-                    HasMissingParts = false,
                 },
                 new SetDto()
                 {
@@ -118,7 +117,6 @@ namespace Lego.Api
                     Description = "The first edition of Hagrid's Hut.",
                     Sealed = false,
                     HasBox = false,
-                    HasMissingParts = true,
                     MissingParts = new List<PartDto>()
                     {
                         Parts[0]
@@ -135,7 +133,6 @@ namespace Lego.Api
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for.",
                     Sealed = false,
                     HasBox = true,
-                    HasMissingParts = false
                 }
             };
         }

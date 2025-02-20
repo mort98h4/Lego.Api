@@ -57,11 +57,6 @@ namespace Lego.Api.Models
         public bool HasBox { get; set; } = true;
 
         /// <summary>
-        /// If the set has missing parts
-        /// </summary>
-        public bool HasMissingParts { get; set; } = false;
-
-        /// <summary>
         /// A list of the missing parts
         /// </summary>
         public ICollection<PartDto> MissingParts { get; set; } = new List<PartDto>();
