@@ -43,7 +43,7 @@
         /// <summary>
         /// If the set is sealed
         /// </summary>
-        public bool Sealed { get; set; } = false;
+        public bool IsSealed { get; set; } = false;
 
         /// <summary>
         /// If the set still has it's box
