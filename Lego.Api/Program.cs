@@ -2,6 +2,8 @@ using System.Reflection;
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Lego.Api;
+using Lego.Api.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -25,6 +27,8 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSingleton<LegosDataStore>();
+
+builder.Services.AddDbContext<LegoContext>(dbContextOptions => dbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:LegosDB"]));
 
 builder.Services.AddApiVersioning(setupAction =>
 {

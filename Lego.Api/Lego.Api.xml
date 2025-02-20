@@ -82,6 +82,54 @@
             Temporary data store constructor
             </summary>
         </member>
+        <member name="T:Lego.Api.Migrations.LegosDBInitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.LegosDBInitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.LegosDBInitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.LegosDBInitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lego.Api.Migrations.PartModelNoToPartNo">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartModelNoToPartNo.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartModelNoToPartNo.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartModelNoToPartNo.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lego.Api.Migrations.AddFKToPartEntity">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddFKToPartEntity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddFKToPartEntity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddFKToPartEntity.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lego.Api.Migrations.SeedData">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SeedData.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SeedData.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SeedData.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:Lego.Api.Models.CollectionDto">
             <summary>
             A collection of Lego sets under a specific theme
@@ -237,11 +285,6 @@
             If the set still has it's box
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.HasMissingParts">
-            <summary>
-            If the set has missing parts
-            </summary>
-        </member>
         <member name="P:Lego.Api.Models.SetForCreationDto.MissingParts">
             <summary>
             A list of the missing parts
@@ -290,11 +333,6 @@
         <member name="P:Lego.Api.Models.SetForUpdatingDto.HasBox">
             <summary>
             If the set still has it's box
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.HasMissingParts">
-            <summary>
-            If the set has missing parts
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetForUpdatingDto.MissingParts">
