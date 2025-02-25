@@ -3,7 +3,9 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Lego.Api;
 using Lego.Api.DbContexts;
+using Lego.Api.Services;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -21,14 +23,21 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers(options =>
 {
     options.ReturnHttpNotAcceptable = true;
+}).AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSingleton<LegosDataStore>();
+//builder.Services.AddSingleton<LegosDataStore>();
 
 builder.Services.AddDbContext<LegoContext>(dbContextOptions => dbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:LegosDB"]));
+
+builder.Services.AddScoped<ILegoRepository, LegoRepository>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddApiVersioning(setupAction =>
 {
