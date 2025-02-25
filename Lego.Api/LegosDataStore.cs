@@ -104,7 +104,7 @@ namespace Lego.Api
                     Collection = Collections[0],
                     NoOfParts = 450,
                     Description = "A display piece of a Republic Era assault ship.",
-                    Sealed = false,
+                    IsSealed = false,
                     HasBox = true,
                 },
                 new SetDto()
@@ -115,7 +115,7 @@ namespace Lego.Api
                     Theme = Themes[1],
                     NoOfParts = 288,
                     Description = "The first edition of Hagrid's Hut.",
-                    Sealed = false,
+                    IsSealed = false,
                     HasBox = false,
                     MissingParts = new List<PartDto>()
                     {
@@ -131,7 +131,7 @@ namespace Lego.Api
                     Collection = Collections[2],
                     NoOfParts = 6785,
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for.",
-                    Sealed = false,
+                    IsSealed = false,
                     HasBox = true,
                 }
             };

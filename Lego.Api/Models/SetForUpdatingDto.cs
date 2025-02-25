@@ -21,14 +21,14 @@ namespace Lego.Api.Models
         public string? Name { get; set; }
 
         /// <summary>
-        /// The theme of the set
+        /// The theme id of the set
         /// </summary>
-        public ThemeDto? Theme { get; set; }
+        public int? ThemeId { get; set; }
 
         /// <summary>
-        /// The collection of the set
+        /// The collection id of the set
         /// </summary>
-        public CollectionDto? Collection { get; set; }
+        public int? CollectionId { get; set; }
 
         /// <summary>
         /// The number of parts included in the set
@@ -45,16 +45,16 @@ namespace Lego.Api.Models
         /// <summary>
         /// If the set is sealed
         /// </summary>
-        public bool? IsSealed { get; set; } = false;
+        public bool? IsSealed { get; set; }
 
         /// <summary>
         /// If the set still has it's box
         /// </summary>
-        public bool? HasBox { get; set; } = true;
+        public bool? HasBox { get; set; }
 
-        /// <summary>
-        /// A list of the missing parts
-        /// </summary>
-        public ICollection<PartDto>? MissingParts { get; set; }
+        ///// <summary>
+        ///// A list of the missing parts
+        ///// </summary>
+        //public ICollection<PartDto>? MissingParts { get; set; }
     }
 }

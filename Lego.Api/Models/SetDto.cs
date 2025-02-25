@@ -43,12 +43,12 @@
         /// <summary>
         /// If the set is sealed
         /// </summary>
-        public bool IsSealed { get; set; } = false;
+        public bool IsSealed { get; set; }
 
         /// <summary>
         /// If the set still has it's box
         /// </summary>
-        public bool HasBox { get; set; } = true;
+        public bool HasBox { get; set; }
 
         /// <summary>
         /// If the set has missing parts

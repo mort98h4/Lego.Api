@@ -9,12 +9,13 @@
             API Controller of Lego sets
             </summary>
         </member>
-        <member name="M:Lego.Api.Controllers.SetsController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SetsController},Lego.Api.LegosDataStore)">
+        <member name="M:Lego.Api.Controllers.SetsController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SetsController},Lego.Api.Services.ILegoRepository,AutoMapper.IMapper)">
             <summary>
             Constructor
             </summary>
             <param name="logger"></param>
-            <param name="legosDataStore"></param>
+            <param name="legoRepository"></param>
+            <param name="mapper"></param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:Lego.Api.Controllers.SetsController.GetSets">
@@ -175,6 +176,11 @@
             The description of the part
             </summary>
         </member>
+        <member name="P:Lego.Api.Models.PartDto.Quantity">
+            <summary>
+            The amount of identical parts that are missing from a set
+            </summary>
+        </member>
         <member name="T:Lego.Api.Models.SetDto">
             <summary>
             A Lego set
@@ -215,7 +221,7 @@
             The description of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.Sealed">
+        <member name="P:Lego.Api.Models.SetDto.IsSealed">
             <summary>
             If the set is sealed
             </summary>
@@ -255,14 +261,14 @@
             The name of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.Theme">
+        <member name="P:Lego.Api.Models.SetForCreationDto.ThemeId">
             <summary>
-            The theme of the set
+            The theme id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.Collection">
+        <member name="P:Lego.Api.Models.SetForCreationDto.CollectionId">
             <summary>
-            The collection of the set
+            The collection id of the set
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetForCreationDto.NoOfParts">
@@ -275,7 +281,7 @@
             The description of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.Sealed">
+        <member name="P:Lego.Api.Models.SetForCreationDto.IsSealed">
             <summary>
             If the set is sealed
             </summary>
@@ -305,14 +311,14 @@
             The name of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.Theme">
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.ThemeId">
             <summary>
-            The theme of the set
+            The theme id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.Collection">
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.CollectionId">
             <summary>
-            The collection of the set
+            The collection id of the set
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfParts">
@@ -325,7 +331,7 @@
             The description of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.Sealed">
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.IsSealed">
             <summary>
             If the set is sealed
             </summary>
@@ -333,11 +339,6 @@
         <member name="P:Lego.Api.Models.SetForUpdatingDto.HasBox">
             <summary>
             If the set still has it's box
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.MissingParts">
-            <summary>
-            A list of the missing parts
             </summary>
         </member>
         <member name="T:Lego.Api.Models.ThemeDto">

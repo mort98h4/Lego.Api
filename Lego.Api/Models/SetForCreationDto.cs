@@ -23,15 +23,15 @@ namespace Lego.Api.Models
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// The theme of the set
+        /// The theme id of the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide a theme")]
-        public ThemeDto Theme { get; set; } = new ThemeDto();
+        [Required(ErrorMessage = "You must provide a theme id")]
+        public int ThemeId { get; set; }
 
         /// <summary>
-        /// The collection of the set
+        /// The collection id of the set
         /// </summary>
-        public CollectionDto? Collection { get; set; }
+        public int? CollectionId { get; set; }
 
         /// <summary>
         /// The number of parts included in the set
