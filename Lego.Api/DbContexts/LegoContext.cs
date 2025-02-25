@@ -79,11 +79,25 @@ namespace Lego.Api.DbContexts
                 new Part(
                     "30055",
                     "Brown",
-                    "Fence 1 x 4 x 2 Spindled with 2 Studs",
-                    1,
-                    2)
+                    "Fence 1 x 4 x 2 Spindled with 2 Studs")
                 {
                     Id = 1
+                });
+
+            modelBuilder.Entity<Set>()
+                .HasMany(e => e.MissingParts)
+                .WithMany(e => e.Sets)
+                .UsingEntity<SetPart>("SetsMissingParts", j =>
+                {
+                    j.Property(e => e.Quantity).HasDefaultValue(1);
+                    j.HasData(
+                        new SetPart
+                        {
+                            SetId = 2,
+                            PartId = 1,
+                            Quantity = 1
+                        }
+                    );
                 });
         }
     }

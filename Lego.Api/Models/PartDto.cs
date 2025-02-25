@@ -24,10 +24,5 @@
         /// The description of the part
         /// </summary>
         public string Description { get; set; } = string.Empty;
-
-        /// <summary>
-        /// The amount of identical parts that are missing from a set
-        /// </summary>
-        public int Quantity { get; set; }
     }
 }

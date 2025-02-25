@@ -21,23 +21,25 @@ namespace Lego.Api.Entities
         [StringLength(200)]
         public string Description { get; set; }
 
-        [Required]
-        [Range(1, Int32.MaxValue)]
-        public int Quantity { get; set; }
+        public ICollection<Set> Sets { get; } = new List<Set>();
 
-        [ForeignKey("SetId")]
-        public Set? Set { get; set; }
+        //[Required]
+        //[Range(1, Int32.MaxValue)]
+        //public int Quantity { get; set; }
 
-        [Required]
-        public int SetId { get; set; }
+        //[ForeignKey("SetId")]
+        //public Set? Set { get; set; }
 
-        public Part(string partNo, string color, string description, int quantity, int setId)
+        //[Required]
+        //public int SetId { get; set; }
+
+        public Part(string partNo, string color, string description)
         {
             PartNo = partNo;
             Color = color;
             Description = description;
-            Quantity = quantity;
-            SetId = setId;
+            //Quantity = quantity;
+            //SetId = setId;
         }
     }
 }

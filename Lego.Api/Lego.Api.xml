@@ -131,6 +131,18 @@
         <member name="M:Lego.Api.Migrations.SeedData.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Lego.Api.Migrations.SetsMissingPartsAdded">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SetsMissingPartsAdded.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SetsMissingPartsAdded.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.SetsMissingPartsAdded.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:Lego.Api.Models.CollectionDto">
             <summary>
             A collection of Lego sets under a specific theme
@@ -174,11 +186,6 @@
         <member name="P:Lego.Api.Models.PartDto.Description">
             <summary>
             The description of the part
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.PartDto.Quantity">
-            <summary>
-            The amount of identical parts that are missing from a set
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SetDto">
