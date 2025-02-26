@@ -114,6 +114,11 @@ namespace Lego.Api.Services
             _context.Themes.Add(theme);
         }
 
+        public void DeleteTheme(Theme theme)
+        {
+            _context.Themes.Remove(theme);
+        }
+
         public async Task<IEnumerable<Collection>> GetCollectionsAsync()
         {
             return await _context.Collections

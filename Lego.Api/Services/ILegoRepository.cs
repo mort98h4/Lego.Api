@@ -13,6 +13,7 @@ namespace Lego.Api.Services
         Task<Theme?> GetThemeAsync(int themeId);
         Task<bool> ThemeExistsAsync(int themeId);
         void CreateTheme(Theme theme);
+        void DeleteTheme(Theme theme);
         
         Task<IEnumerable<Collection>> GetCollectionsAsync();
         Task<Collection?> GetCollectionAsync(int collectionId);

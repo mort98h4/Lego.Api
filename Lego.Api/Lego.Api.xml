@@ -103,6 +103,13 @@
             <param name="theme">The theme for updating</param>
             <returns>The updated theme</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.DeleteTheme(System.Int32)">
+            <summary>
+            Delete a Lego theme
+            </summary>
+            <param name="themeId">The id of the theme for deletion</param>
+            <returns>No content</returns>
+        </member>
         <member name="T:Lego.Api.LegosDataStore">
             <summary>
             Temporary data store 

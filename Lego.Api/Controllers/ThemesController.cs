@@ -138,5 +138,30 @@ namespace Lego.Api.Controllers
 
             return Ok(updatedTheme);
         }
+
+        /// <summary>
+        /// Delete a Lego theme
+        /// </summary>
+        /// <param name="themeId">The id of the theme for deletion</param>
+        /// <returns>No content</returns>
+        [HttpDelete("{themeId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteTheme(int themeId)
+        {
+            var themeEntity = await _legoRepository.GetThemeAsync(themeId);
+            if (themeEntity == null)
+            {
+                var message = $"Theme with id '{themeId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            _legoRepository.DeleteTheme(themeEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
