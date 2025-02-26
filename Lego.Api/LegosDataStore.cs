@@ -25,7 +25,7 @@ namespace Lego.Api
         /// <summary>
         /// List of collections
         /// </summary>
-        public List<CollectionDto> Collections { get; set; }
+        public List<SeriesDto> Collections { get; set; }
 
         /// <summary>
         /// Temporary data store constructor
@@ -71,21 +71,21 @@ namespace Lego.Api
                 }
             };
 
-            Collections = new List<CollectionDto>() 
+            Collections = new List<SeriesDto>() 
             {
-                new CollectionDto()
+                new SeriesDto()
                 {
                     Id = 1,
                     Name = "The Mid-Scale Starship Collection",
                     Description = "Small starships made for displaying."
                 },
-                new CollectionDto()
+                new SeriesDto()
                 {
                     Id = 2,
                     Name = "The Diorama Collection",
                     Description = "Scenes from the Star Wars Universe made as dioramas for displaying."
                 },
-                new CollectionDto()
+                new SeriesDto()
                 {
                     Id = 3,
                     Name = "Ultimate Collector Series",

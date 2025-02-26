@@ -6,8 +6,8 @@ namespace Lego.Api.Profiles
     {
         public CollectionProfile()
         {
-            CreateMap<Entities.Collection, Models.CollectionDto>();
-            CreateMap<Models.CollectionDto, Entities.Collection>();
+            CreateMap<Entities.Collection, Models.SeriesDto>();
+            CreateMap<Models.SeriesDto, Entities.Collection>();
         }
     }
 }
