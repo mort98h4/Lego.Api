@@ -41,6 +41,14 @@
             <param name="series">The series for creation</param>
             <returns>The newly created series</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.UpdateSeries(System.Int32,Lego.Api.Models.SeriesForUpdatingDto)">
+            <summary>
+            Update a Lego series
+            </summary>
+            <param name="seriesId">The id of the series to update</param>
+            <param name="series">The series for updating</param>
+            <returns>The updated series</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets
@@ -305,6 +313,21 @@
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SeriesForCreationDto.Description">
+            <summary>
+            The description of the series
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SeriesForUpdatingDto">
+            <summary>
+            A Lego series for updating
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesForUpdatingDto.Name">
+            <summary>
+            The name of the series
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesForUpdatingDto.Description">
             <summary>
             The description of the series
             </summary>

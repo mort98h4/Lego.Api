@@ -8,6 +8,7 @@ namespace Lego.Api.Profiles
         {
             CreateMap<Entities.Series, Models.SeriesDto>();
             CreateMap<Models.SeriesForCreationDto, Entities.Series>();
+            CreateMap<Models.SeriesForUpdatingDto, Entities.Series>();
         }
     }
 }

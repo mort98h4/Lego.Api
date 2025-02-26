@@ -106,5 +106,37 @@ namespace Lego.Api.Controllers
                 seriesId = createdSeries.Id
             }, createdSeries);
         }
+
+        /// <summary>
+        /// Update a Lego series
+        /// </summary>
+        /// <param name="seriesId">The id of the series to update</param>
+        /// <param name="series">The series for updating</param>
+        /// <returns>The updated series</returns>
+        [HttpPut("{seriesId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<SeriesDto>> UpdateSeries(int seriesId, SeriesForUpdatingDto series)
+        {
+            var seriesEntity = await _legoRepository.GetSeriesByIdAsync(seriesId);
+            if (seriesEntity == null)
+            {
+                var message = $"Series with id '{seriesId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            series.Name = string.IsNullOrWhiteSpace(series.Name) ? seriesEntity.Name : series.Name;
+            series.Description = series.Description == null ? seriesEntity.Description : series.Description.Trim();
+            series.Description = series.Description == "" ? null : series.Description;
+
+            var finalSeries = _mapper.Map(series, seriesEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            var updatedSeries = _mapper.Map<SeriesDto>(finalSeries);
+
+            return Ok(updatedSeries);
+        }
     }
 }
