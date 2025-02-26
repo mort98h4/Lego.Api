@@ -19,6 +19,7 @@ namespace Lego.Api.Services
         Task<Series?> GetSeriesByIdAsync(int seriesId);
         Task<bool> SeriesExistsAsync(int seriesId);
         void CreateSeries(Series series);
+        void DeleteSeries(Series series);
 
         Task<bool> SaveChangesAsync();
     }

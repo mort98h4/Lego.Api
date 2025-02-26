@@ -138,5 +138,30 @@ namespace Lego.Api.Controllers
 
             return Ok(updatedSeries);
         }
+
+        /// <summary>
+        /// Delete a Lego series
+        /// </summary>
+        /// <param name="seriesId">The id of the series for deletion</param>
+        /// <returns>No content</returns>
+        [HttpDelete("{seriesId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteSeries(int seriesId)
+        {
+            var seriesEntity = await _legoRepository.GetSeriesByIdAsync(seriesId);
+            if (seriesEntity == null)
+            {
+                var message = $"Series with id '{seriesId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            _legoRepository.DeleteSeries(seriesEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

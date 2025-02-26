@@ -49,6 +49,13 @@
             <param name="series">The series for updating</param>
             <returns>The updated series</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.DeleteSeries(System.Int32)">
+            <summary>
+            Delete a Lego series
+            </summary>
+            <param name="seriesId">The id of the series for deletion</param>
+            <returns>No content</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets

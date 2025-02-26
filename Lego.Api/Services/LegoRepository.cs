@@ -159,6 +159,11 @@ namespace Lego.Api.Services
             _context.Series.Add(series);
         }
 
+        public void DeleteSeries(Series series)
+        {
+            _context.Series.Remove(series);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;
