@@ -6,7 +6,7 @@ namespace Lego.Api.Services
     {
         Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? collectionId, string? searchQuery, int pageNumber, int pageSize);
         Task<Set?> GetSetAsync(int setId);
-        Task<IEnumerable<Theme>> GetThemesAsync();
+        Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Theme?> GetThemeAsync(int themeId);
         Task<IEnumerable<Collection>> GetCollectionsAsync();
         Task<Collection?> GetCollectionAsync(int collectionId);

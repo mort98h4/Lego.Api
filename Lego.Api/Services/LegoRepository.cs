@@ -64,11 +64,28 @@ namespace Lego.Api.Services
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Theme>> GetThemesAsync()
+        public async Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize)
         {
-            return await _context.Themes
+            var themes = _context.Themes as IQueryable<Theme>;
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                searchQuery = searchQuery.Trim().ToLower();
+                themes = themes.Where(t => 
+                    t.Name.ToLower().Contains(searchQuery) ||
+                    (t.Description != null && t.Description.ToLower().Contains(searchQuery)));
+            }
+
+            var totalItemCount = await themes.CountAsync();
+            var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
+
+            var themesToReturn = await themes
                 .OrderBy(t => t.Name)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
                 .ToListAsync();
+
+            return (themesToReturn, paginationMetadata);
         }
 
         public async Task<Theme?> GetThemeAsync(int themeId)
