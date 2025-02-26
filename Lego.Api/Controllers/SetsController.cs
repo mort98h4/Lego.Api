@@ -75,7 +75,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetSet(int setId)
         {
-            var set = await _legoRepository.GetSetAsync(setId);
+            var set = await _legoRepository.GetSetByIdAsync(setId);
 
             if (set == null)
             {
@@ -98,7 +98,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<SetDto>> CreateSet(SetForCreationDto set)
         {
-            var theme = await _legoRepository.GetThemeAsync(set.ThemeId);
+            var theme = await _legoRepository.GetThemeByIdAsync(set.ThemeId);
             if (theme == null)
             {
                 var message = $"Theme with id '{set.ThemeId}' was not found, when trying to create a new set.";
@@ -145,7 +145,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<SetDto>> UpdateSet(int setId, SetForUpdatingDto set)
         {
-            var setEntity = await _legoRepository.GetSetAsync(setId);
+            var setEntity = await _legoRepository.GetSetByIdAsync(setId);
             if (setEntity == null)
             {
                 var message = $"Set with id '{setId}' was not found.";
@@ -155,7 +155,7 @@ namespace Lego.Api.Controllers
 
             if (set.ThemeId != null)
             {
-                var theme = await _legoRepository.GetThemeAsync((int)set.ThemeId);
+                var theme = await _legoRepository.GetThemeByIdAsync((int)set.ThemeId);
                 if (theme == null)
                 {
                     var message = $"Theme with id '{set.ThemeId}' was not found, when trying to create a new set.";
@@ -212,7 +212,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DeleteSet(int setId)
         {
-            var setEntity = await _legoRepository.GetSetAsync(setId);
+            var setEntity = await _legoRepository.GetSetByIdAsync(setId);
             if (setEntity == null)
             {
                 var message = $"Set with id '{setId}' was not found.";

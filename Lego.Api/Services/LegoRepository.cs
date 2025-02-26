@@ -55,7 +55,7 @@ namespace Lego.Api.Services
             return (setsToReturn, paginationMetadata);
         }
 
-        public async Task<Set?> GetSetAsync(int setId)
+        public async Task<Set?> GetSetByIdAsync(int setId)
         {
             return await _context.Sets.Where(s => s.Id == setId)
                 .Include(s => s.Theme)
@@ -98,7 +98,7 @@ namespace Lego.Api.Services
             return (themesToReturn, paginationMetadata);
         }
 
-        public async Task<Theme?> GetThemeAsync(int themeId)
+        public async Task<Theme?> GetThemeByIdAsync(int themeId)
         {
             return await _context.Themes.Where(t => t.Id == themeId)
                 .FirstOrDefaultAsync();

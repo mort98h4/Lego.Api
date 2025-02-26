@@ -73,7 +73,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTheme(int themeId)
         {
-            var theme = await _legoRepository.GetThemeAsync(themeId);
+            var theme = await _legoRepository.GetThemeByIdAsync(themeId);
             if (theme == null)
             {
                 var message = $"Theme with id '{themeId}' was not found.";
@@ -119,7 +119,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<ThemeDto>> UpdateTheme(int themeId, ThemeForUpdatingDto theme)
         {
-            var themeEntity = await _legoRepository.GetThemeAsync(themeId);
+            var themeEntity = await _legoRepository.GetThemeByIdAsync(themeId);
             if (themeEntity == null)
             {
                 var message = $"Theme with id '{themeId}' was not found.";
@@ -150,7 +150,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DeleteTheme(int themeId)
         {
-            var themeEntity = await _legoRepository.GetThemeAsync(themeId);
+            var themeEntity = await _legoRepository.GetThemeByIdAsync(themeId);
             if (themeEntity == null)
             {
                 var message = $"Theme with id '{themeId}' was not found.";

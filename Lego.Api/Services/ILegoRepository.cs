@@ -5,12 +5,12 @@ namespace Lego.Api.Services
     public interface ILegoRepository
     {
         Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? seriesId, string? searchQuery, int pageNumber, int pageSize);
-        Task<Set?> GetSetAsync(int setId);
+        Task<Set?> GetSetByIdAsync(int setId);
         void CreateSet(Set set);
         void DeleteSet(Set set);
 
         Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize);
-        Task<Theme?> GetThemeAsync(int themeId);
+        Task<Theme?> GetThemeByIdAsync(int themeId);
         Task<bool> ThemeExistsAsync(int themeId);
         void CreateTheme(Theme theme);
         void DeleteTheme(Theme theme);
