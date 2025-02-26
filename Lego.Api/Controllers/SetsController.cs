@@ -187,7 +187,8 @@ namespace Lego.Api.Controllers
             set.ModelNo = string.IsNullOrWhiteSpace(set.ModelNo) ? setEntity.ModelNo : set.ModelNo;
             set.Name = string.IsNullOrWhiteSpace(set.Name) ? setEntity.Name : set.Name;
             set.ThemeId = set.ThemeId > 0 ? set.ThemeId : setEntity.ThemeId;
-            set.Description = string.IsNullOrWhiteSpace(set.Description) ? setEntity.Description : set.Description;
+            set.Description = set.Description == null ? setEntity.Description : set.Description.Trim();
+            set.Description = set.Description == "" ? null : set.Description;
             set.NoOfParts = set.NoOfParts > 0 ? set.NoOfParts : setEntity.NoOfParts;
             set.IsSealed = set.IsSealed != null ? set.IsSealed : Convert.ToBoolean(setEntity.IsSealed);
             set.HasBox = set.HasBox != null ? set.HasBox : Convert.ToBoolean(setEntity.HasBox);
