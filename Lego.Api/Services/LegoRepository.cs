@@ -14,14 +14,45 @@ namespace Lego.Api.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<IEnumerable<Set>> GetSetsAsync()
+        public async Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? collectionId, string? searchQuery, int pageNumber, int pageSize)
         {
-            return await _context.Sets
+            var sets = _context.Sets as IQueryable<Set>;
+
+            if (themeId != null && themeId > 0)
+            {
+                sets = sets.Where(s => s.ThemeId == themeId);
+            }
+
+            if (collectionId != null && collectionId > 0)
+            {
+                sets = sets.Where(s => s.CollectionId == collectionId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                searchQuery = searchQuery.Trim().ToLower();
+                sets = sets.Where(s => 
+                    s.Name.ToLower().Contains(searchQuery) ||
+                    s.ModelNo.Contains(searchQuery) ||
+                    (s.Description != null && s.Description.ToLower().Contains(searchQuery)) ||
+                    (s.Theme != null && s.Theme.Name.ToLower().Contains(searchQuery)) ||
+                    (s.Collection != null && s.Collection.Name.ToLower().Contains(searchQuery))
+                    );
+            }
+
+            var totalItemCount = await sets.CountAsync();
+            var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
+
+            var setsToReturn = await sets
                 .Include(s => s.Theme)
                 .Include(s => s.Collection)
                 .Include(s => s.MissingParts)
                 .OrderBy(s => s.ModelNo)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
                 .ToListAsync();
+
+            return (setsToReturn, paginationMetadata);
         }
 
         public async Task<Set?> GetSetAsync(int setId)

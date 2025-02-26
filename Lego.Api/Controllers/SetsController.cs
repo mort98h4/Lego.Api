@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
 using Lego.Api.Entities;
+using Lego.Api.Helpers;
 using Lego.Api.Models;
 using Lego.Api.Services;
 using Microsoft.AspNetCore.Http;
@@ -40,13 +41,25 @@ namespace Lego.Api.Controllers
         /// <summary>
         /// Get all Lego sets
         /// </summary>
+        /// <param name="themeId">Filter Lego sets by a known theme</param>
+        /// <param name="collectionId">Filter Lego sets by a known collection</param>
+        /// <param name="searchQuery">Search Lego sets by model number, name, description. theme name or collection name</param>
+        /// <param name="pageNumber">The page to return</param>
+        /// <param name="pageSize">Number of sets to return</param>
         /// <returns>A list of sets</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<SetDto>>> GetSets()
+        public async Task<ActionResult<IEnumerable<SetDto>>> GetSets(int? themeId, int? collectionId, string? searchQuery, int pageNumber = 1, int pageSize = Constants.DefaultPageSize)
         {
-            var setEntities = await _legoRepository.GetSetsAsync();
+            if (pageSize > Constants.MaxPageSize)
+            {
+                pageSize = Constants.MaxPageSize;
+            }
+
+            var (setEntities, paginationMetadata) = await _legoRepository.GetSetsAsync(themeId, collectionId, searchQuery, pageNumber, pageSize);
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
 
             return Ok(_mapper.Map<IEnumerable<SetDto>>(setEntities));
         }
