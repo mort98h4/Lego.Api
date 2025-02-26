@@ -58,6 +58,36 @@
             <param name="setId">The id of the set for deletion</param>
             <returns>No content</returns>
         </member>
+        <member name="T:Lego.Api.Controllers.ThemesController">
+            <summary>
+            API Controller of Lego themes
+            </summary>
+        </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.ThemesController},Lego.Api.Services.ILegoRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="legoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.GetThemes(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get all Lego themes
+            </summary>
+            <param name="searchQuery">Search Lego themes by name or description</param>
+            <param name="pageNumber">The page to return</param>
+            <param name="pageSize">Number of themes to return</param>
+            <returns>A list of Lego themes</returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.GetTheme(System.Int32)">
+            <summary>
+            Get a Lego theme by id
+            </summary>
+            <param name="themeId">The id of the theme to get</param>
+            <returns>A Lego theme</returns>
+        </member>
         <member name="T:Lego.Api.LegosDataStore">
             <summary>
             Temporary data store 
