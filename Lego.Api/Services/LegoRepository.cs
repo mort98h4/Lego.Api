@@ -64,6 +64,16 @@ namespace Lego.Api.Services
                 .FirstOrDefaultAsync();
         }
 
+        public void CreateSet(Set set)
+        {
+            _context.Sets.Add(set);
+        }
+
+        public void DeleteSet(Set set)
+        {
+            _context.Sets.Remove(set);
+        }
+
         public async Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize)
         {
             var themes = _context.Themes as IQueryable<Theme>;
@@ -94,6 +104,11 @@ namespace Lego.Api.Services
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<bool> ThemeExistsAsync(int themeId)
+        {
+            return await _context.Themes.AnyAsync(t => t.Id == themeId);
+        }
+
         public async Task<IEnumerable<Collection>> GetCollectionsAsync()
         {
             return await _context.Collections
@@ -107,24 +122,9 @@ namespace Lego.Api.Services
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<bool> ThemeExistsAsync(int themeId)
-        {
-            return await _context.Themes.AnyAsync(t => t.Id == themeId);
-        }
-
         public async Task<bool> CollectionExistsAsync(int collectionId)
         {
             return await _context.Collections.AnyAsync(c => c.Id == collectionId);
-        }
-
-        public void CreateSet(Set set)
-        {
-            _context.Sets.Add(set);
-        }
-
-        public void DeleteSet(Set set)
-        {
-            _context.Sets.Remove(set);
         }
 
         public async Task<bool> SaveChangesAsync()
