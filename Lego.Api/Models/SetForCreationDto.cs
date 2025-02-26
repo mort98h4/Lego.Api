@@ -49,16 +49,11 @@ namespace Lego.Api.Models
         /// <summary>
         /// If the set is sealed
         /// </summary>
-        public bool IsSealed { get; set; } = false;
+        public bool IsSealed { get; set; }
 
         /// <summary>
         /// If the set still has it's box
         /// </summary>
-        public bool HasBox { get; set; } = true;
-
-        /// <summary>
-        /// A list of the missing parts
-        /// </summary>
-        public ICollection<PartDto> MissingParts { get; set; } = new List<PartDto>();
+        public bool HasBox { get; set; }
     }
 }

@@ -298,11 +298,6 @@
             If the set still has it's box
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.MissingParts">
-            <summary>
-            A list of the missing parts
-            </summary>
-        </member>
         <member name="T:Lego.Api.Models.SetForUpdatingDto">
             <summary>
             A Lego set for updating
