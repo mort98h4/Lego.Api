@@ -110,7 +110,7 @@ namespace Lego.Api.Controllers
             
             if (set.SeriesId != null)
             {
-                var collection = await _legoRepository.GetSeriesAsync((int)set.SeriesId);
+                var collection = await _legoRepository.GetSeriesByIdAsync((int)set.SeriesId);
                 if (collection == null)
                 {
                     var message = $"Series with id '{set.SeriesId}' was not found, when trying to create a new set.";
@@ -166,8 +166,8 @@ namespace Lego.Api.Controllers
 
             if (set.SeriesId != null && set.SeriesId != -1)
             {
-                var collection = await _legoRepository.GetSeriesAsync((int)set.SeriesId);
-                if (collection == null)
+                var series = await _legoRepository.GetSeriesByIdAsync((int)set.SeriesId);
+                if (series == null)
                 {
                     var message = $"Series with id '{set.SeriesId}' was not found, when trying to create a new set.";
                     _logger.LogInformation(message);

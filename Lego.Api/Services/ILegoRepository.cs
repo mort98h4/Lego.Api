@@ -15,8 +15,8 @@ namespace Lego.Api.Services
         void CreateTheme(Theme theme);
         void DeleteTheme(Theme theme);
         
-        Task<IEnumerable<Series>> GetSeriesAsync();
-        Task<Series?> GetSeriesAsync(int seriesId);
+        Task<(IEnumerable<Series>, PaginationMetadata)> GetSeriesAsync(string? searchQuery, int pageNumber, int pageSize);
+        Task<Series?> GetSeriesByIdAsync(int seriesId);
         Task<bool> SeriesExistsAsync(int seriesId);
 
         Task<bool> SaveChangesAsync();

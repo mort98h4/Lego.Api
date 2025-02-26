@@ -119,14 +119,31 @@ namespace Lego.Api.Services
             _context.Themes.Remove(theme);
         }
 
-        public async Task<IEnumerable<Series>> GetSeriesAsync()
+        public async Task<(IEnumerable<Series>, PaginationMetadata)> GetSeriesAsync(string? searchQuery, int pageNumber, int pageSize)
         {
-            return await _context.Series
-                .OrderBy(c => c.Name)
+            var series = _context.Series as IQueryable<Series>;
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                searchQuery = searchQuery.Trim().ToLower();
+                series = series.Where(s =>
+                    s.Name.ToLower().Contains(searchQuery) ||
+                    (s.Description != null && s.Description.ToLower().Contains(searchQuery)));
+            }
+
+            var totalItemCount = await series.CountAsync();
+            var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
+
+            var themesToReturn = await series
+                .OrderBy(t => t.Name)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
                 .ToListAsync();
+
+            return (themesToReturn, paginationMetadata);
         }
 
-        public async Task<Series?> GetSeriesAsync(int seriesId)
+        public async Task<Series?> GetSeriesByIdAsync(int seriesId)
         {
             return await _context.Series.Where(c => c.Id == seriesId)
                 .FirstOrDefaultAsync();

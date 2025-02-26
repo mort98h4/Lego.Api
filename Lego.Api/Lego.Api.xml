@@ -4,6 +4,36 @@
         <name>Lego.Api</name>
     </assembly>
     <members>
+        <member name="T:Lego.Api.Controllers.SeriesController">
+            <summary>
+            API Controller of Lego series
+            </summary>
+        </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SeriesController},Lego.Api.Services.ILegoRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="legoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.GetSeries(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get all Lego series
+            </summary>
+            <param name="searchQuery">Search Lego series by name or description</param>
+            <param name="pageNumber">The page to return</param>
+            <param name="pageSize">The number of series to return</param>
+            <returns>A list of Lego series</returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.GetSeriesById(System.Int32)">
+            <summary>
+            Get a Lego series by id
+            </summary>
+            <param name="seriesId">The id of the series to get</param>
+            <returns>A Lego series</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets
