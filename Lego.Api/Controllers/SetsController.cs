@@ -82,6 +82,7 @@ namespace Lego.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<SetDto>> CreateSet(SetForCreationDto set)
         {
             var theme = await _legoRepository.GetThemeAsync(set.ThemeId);
@@ -99,7 +100,7 @@ namespace Lego.Api.Controllers
                 var collection = await _legoRepository.GetCollectionAsync((int)set.CollectionId);
                 if (collection == null)
                 {
-                    var message = $"Theme with id '{set.CollectionId}' was not found, when trying to create a new set.";
+                    var message = $"Collection with id '{set.CollectionId}' was not found, when trying to create a new set.";
                     _logger.LogInformation(message);
 
                     return Problem(message, null, 404, "Not found");
@@ -157,7 +158,6 @@ namespace Lego.Api.Controllers
                 {
                     var message = $"Collection with id '{set.CollectionId}' was not found, when trying to create a new set.";
                     _logger.LogInformation(message);
-
                     return Problem(message, null, 404, "Not found");
                 }
             }
@@ -179,12 +179,12 @@ namespace Lego.Api.Controllers
             set.IsSealed = set.IsSealed != null ? set.IsSealed : Convert.ToBoolean(setEntity.IsSealed);
             set.HasBox = set.HasBox != null ? set.HasBox : Convert.ToBoolean(setEntity.HasBox);
 
-            var updatedSet = _mapper.Map(set, setEntity);
+            var finalSet = _mapper.Map(set, setEntity);
             await _legoRepository.SaveChangesAsync();
 
-            var setToReturn = _mapper.Map<SetDto>(updatedSet);
+            var updatedSet = _mapper.Map<SetDto>(finalSet);
 
-            return Ok(setToReturn);
+            return Ok(updatedSet);
         }
 
         /// <summary>
