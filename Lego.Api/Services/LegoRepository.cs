@@ -14,7 +14,7 @@ namespace Lego.Api.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? collectionId, string? searchQuery, int pageNumber, int pageSize)
+        public async Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? seriesId, string? searchQuery, int pageNumber, int pageSize)
         {
             var sets = _context.Sets as IQueryable<Set>;
 
@@ -23,9 +23,9 @@ namespace Lego.Api.Services
                 sets = sets.Where(s => s.ThemeId == themeId);
             }
 
-            if (collectionId != null && collectionId > 0)
+            if (seriesId != null && seriesId > 0)
             {
-                sets = sets.Where(s => s.CollectionId == collectionId);
+                sets = sets.Where(s => s.SeriesId == seriesId);
             }
 
             if (!string.IsNullOrWhiteSpace(searchQuery))
@@ -36,7 +36,7 @@ namespace Lego.Api.Services
                     s.ModelNo.Contains(searchQuery) ||
                     (s.Description != null && s.Description.ToLower().Contains(searchQuery)) ||
                     (s.Theme != null && s.Theme.Name.ToLower().Contains(searchQuery)) ||
-                    (s.Collection != null && s.Collection.Name.ToLower().Contains(searchQuery))
+                    (s.Series != null && s.Series.Name.ToLower().Contains(searchQuery))
                     );
             }
 
@@ -45,7 +45,7 @@ namespace Lego.Api.Services
 
             var setsToReturn = await sets
                 .Include(s => s.Theme)
-                .Include(s => s.Collection)
+                .Include(s => s.Series)
                 .Include(s => s.MissingParts)
                 .OrderBy(s => s.ModelNo)
                 .Skip(pageSize * (pageNumber - 1))
@@ -59,7 +59,7 @@ namespace Lego.Api.Services
         {
             return await _context.Sets.Where(s => s.Id == setId)
                 .Include(s => s.Theme)
-                .Include(s => s.Collection)
+                .Include(s => s.Series)
                 .Include(s => s.MissingParts)
                 .FirstOrDefaultAsync();
         }
@@ -119,22 +119,22 @@ namespace Lego.Api.Services
             _context.Themes.Remove(theme);
         }
 
-        public async Task<IEnumerable<Collection>> GetCollectionsAsync()
+        public async Task<IEnumerable<Series>> GetSeriesAsync()
         {
-            return await _context.Collections
+            return await _context.Series
                 .OrderBy(c => c.Name)
                 .ToListAsync();
         }
 
-        public async Task<Collection?> GetCollectionAsync(int collectionId)
+        public async Task<Series?> GetSeriesAsync(int seriesId)
         {
-            return await _context.Collections.Where(c => c.Id == collectionId)
+            return await _context.Series.Where(c => c.Id == seriesId)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<bool> CollectionExistsAsync(int collectionId)
+        public async Task<bool> SeriesExistsAsync(int seriesId)
         {
-            return await _context.Collections.AnyAsync(c => c.Id == collectionId);
+            return await _context.Series.AnyAsync(c => c.Id == seriesId);
         }
 
         public async Task<bool> SaveChangesAsync()

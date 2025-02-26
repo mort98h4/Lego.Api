@@ -28,7 +28,7 @@
         /// <summary>
         /// The collection of the set
         /// </summary>
-        public SeriesDto? Collection { get; set; }
+        public SeriesDto? Series { get; set; }
 
         /// <summary>
         /// The number of parts included in the set

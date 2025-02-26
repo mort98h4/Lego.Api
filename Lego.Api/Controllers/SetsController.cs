@@ -42,22 +42,22 @@ namespace Lego.Api.Controllers
         /// Get all Lego sets
         /// </summary>
         /// <param name="themeId">Filter Lego sets by a known theme</param>
-        /// <param name="collectionId">Filter Lego sets by a known collection</param>
-        /// <param name="searchQuery">Search Lego sets by model number, name, description. theme name or collection name</param>
+        /// <param name="seriesId">Filter Lego sets by a known series</param>
+        /// <param name="searchQuery">Search Lego sets by model number, name, description. theme name or series name</param>
         /// <param name="pageNumber">The page to return</param>
         /// <param name="pageSize">Number of sets to return</param>
         /// <returns>A list of sets</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<SetDto>>> GetSets(int? themeId, int? collectionId, string? searchQuery, int pageNumber = 1, int pageSize = Constants.DefaultPageSize)
+        public async Task<ActionResult<IEnumerable<SetDto>>> GetSets(int? themeId, int? seriesId, string? searchQuery, int pageNumber = 1, int pageSize = Constants.DefaultPageSize)
         {
             if (pageSize > Constants.MaxPageSize)
             {
                 pageSize = Constants.MaxPageSize;
             }
 
-            var (setEntities, paginationMetadata) = await _legoRepository.GetSetsAsync(themeId, collectionId, searchQuery, pageNumber, pageSize);
+            var (setEntities, paginationMetadata) = await _legoRepository.GetSetsAsync(themeId, seriesId, searchQuery, pageNumber, pageSize);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
 
@@ -108,12 +108,12 @@ namespace Lego.Api.Controllers
             }
 
             
-            if (set.CollectionId != null)
+            if (set.SeriesId != null)
             {
-                var collection = await _legoRepository.GetCollectionAsync((int)set.CollectionId);
+                var collection = await _legoRepository.GetSeriesAsync((int)set.SeriesId);
                 if (collection == null)
                 {
-                    var message = $"Collection with id '{set.CollectionId}' was not found, when trying to create a new set.";
+                    var message = $"Series with id '{set.SeriesId}' was not found, when trying to create a new set.";
                     _logger.LogInformation(message);
 
                     return Problem(message, null, 404, "Not found");
@@ -164,24 +164,24 @@ namespace Lego.Api.Controllers
                 }
             }
 
-            if (set.CollectionId != null && set.CollectionId != -1)
+            if (set.SeriesId != null && set.SeriesId != -1)
             {
-                var collection = await _legoRepository.GetCollectionAsync((int)set.CollectionId);
+                var collection = await _legoRepository.GetSeriesAsync((int)set.SeriesId);
                 if (collection == null)
                 {
-                    var message = $"Collection with id '{set.CollectionId}' was not found, when trying to create a new set.";
+                    var message = $"Series with id '{set.SeriesId}' was not found, when trying to create a new set.";
                     _logger.LogInformation(message);
                     return Problem(message, null, 404, "Not found");
                 }
             }
 
-            if (set.CollectionId == -1)
+            if (set.SeriesId == -1)
             {
-                set.CollectionId = null;
+                set.SeriesId = null;
             }
             else
             {
-                set.CollectionId = set.CollectionId > 0 ? set.CollectionId : setEntity.CollectionId;
+                set.SeriesId = set.SeriesId > 0 ? set.SeriesId : setEntity.SeriesId;
             }
 
             set.ModelNo = string.IsNullOrWhiteSpace(set.ModelNo) ? setEntity.ModelNo : set.ModelNo;

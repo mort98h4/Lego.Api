@@ -23,10 +23,10 @@ namespace Lego.Api.Entities
         [Required]
         public int ThemeId { get; set; }
 
-        [ForeignKey("CollectionId")]
-        public Collection? Collection { get; set; }
+        [ForeignKey("SeriesId")]
+        public Series? Series { get; set; }
 
-        public int? CollectionId { get; set; }
+        public int? SeriesId { get; set; }
 
         [Required]
         [Range(1, Int32.MaxValue)]

@@ -76,13 +76,13 @@ namespace Lego.Api
                 new SeriesDto()
                 {
                     Id = 1,
-                    Name = "The Mid-Scale Starship Collection",
+                    Name = "The Mid-Scale Starship Series",
                     Description = "Small starships made for displaying."
                 },
                 new SeriesDto()
                 {
                     Id = 2,
-                    Name = "The Diorama Collection",
+                    Name = "The Diorama Series",
                     Description = "Scenes from the Star Wars Universe made as dioramas for displaying."
                 },
                 new SeriesDto()
@@ -101,7 +101,7 @@ namespace Lego.Api
                     ModelNo = "75404",
                     Name = "Acclamator-Class Assault Ship",
                     Theme = Themes[0],
-                    Collection = Collections[0],
+                    Series = Collections[0],
                     NoOfParts = 450,
                     Description = "A display piece of a Republic Era assault ship.",
                     IsSealed = false,
@@ -128,7 +128,7 @@ namespace Lego.Api
                     ModelNo = "75313",
                     Name = "AT-AT",
                     Theme = Themes[0],
-                    Collection = Collections[2],
+                    Series = Collections[2],
                     NoOfParts = 6785,
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for.",
                     IsSealed = false,

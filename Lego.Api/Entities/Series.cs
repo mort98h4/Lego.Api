@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lego.Api.Entities
 {
-    public class Collection
+    public class Series
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,7 +16,7 @@ namespace Lego.Api.Entities
         [StringLength(200)]
         public string? Description { get; set; }
 
-        public Collection(string name)
+        public Series(string name)
         {
             Name = name;
         }

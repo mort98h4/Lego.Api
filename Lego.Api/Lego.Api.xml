@@ -23,8 +23,8 @@
             Get all Lego sets
             </summary>
             <param name="themeId">Filter Lego sets by a known theme</param>
-            <param name="collectionId">Filter Lego sets by a known collection</param>
-            <param name="searchQuery">Search Lego sets by model number, name, description. theme name or collection name</param>
+            <param name="seriesId">Filter Lego sets by a known series</param>
+            <param name="searchQuery">Search Lego sets by model number, name, description. theme name or series name</param>
             <param name="pageNumber">The page to return</param>
             <param name="pageSize">Number of sets to return</param>
             <returns>A list of sets</returns>
@@ -200,25 +200,17 @@
         <member name="M:Lego.Api.Migrations.SetsMissingPartsAdded.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Lego.Api.Models.CollectionDto">
-            <summary>
-            A collection of Lego sets under a specific theme
-            </summary>
+        <member name="T:Lego.Api.Migrations.UpdatedCollectionToSeries">
+            <inheritdoc />
         </member>
-        <member name="P:Lego.Api.Models.CollectionDto.Id">
-            <summary>
-            The id of the collection
-            </summary>
+        <member name="M:Lego.Api.Migrations.UpdatedCollectionToSeries.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
         </member>
-        <member name="P:Lego.Api.Models.CollectionDto.Name">
-            <summary>
-            The name of the collection
-            </summary>
+        <member name="M:Lego.Api.Migrations.UpdatedCollectionToSeries.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
         </member>
-        <member name="P:Lego.Api.Models.CollectionDto.Description">
-            <summary>
-            The description of the collection
-            </summary>
+        <member name="M:Lego.Api.Migrations.UpdatedCollectionToSeries.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
         </member>
         <member name="T:Lego.Api.Models.PartDto">
             <summary>
@@ -243,6 +235,26 @@
         <member name="P:Lego.Api.Models.PartDto.Description">
             <summary>
             The description of the part
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SeriesDto">
+            <summary>
+            A series of Lego sets under a specific theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesDto.Id">
+            <summary>
+            The id of the series
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesDto.Name">
+            <summary>
+            The name of the series
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesDto.Description">
+            <summary>
+            The description of the series
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SetDto">
@@ -270,7 +282,7 @@
             The theme of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.Collection">
+        <member name="P:Lego.Api.Models.SetDto.Series">
             <summary>
             The collection of the set
             </summary>
@@ -330,7 +342,7 @@
             The theme id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.CollectionId">
+        <member name="P:Lego.Api.Models.SetForCreationDto.SeriesId">
             <summary>
             The collection id of the set
             </summary>
@@ -375,7 +387,7 @@
             The theme id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.CollectionId">
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.SeriesId">
             <summary>
             The collection id of the set
             </summary>

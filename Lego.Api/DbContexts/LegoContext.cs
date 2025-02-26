@@ -8,7 +8,7 @@ namespace Lego.Api.DbContexts
         public DbSet<Set> Sets { get; set; }
         public DbSet<Part> Parts { get; set; }
         public DbSet<Theme> Themes { get; set; }
-        public DbSet<Collection> Collections { get; set; }
+        public DbSet<Series> Series { get; set; }
 
         public LegoContext(DbContextOptions<LegoContext> options) : base(options) { }
 
@@ -26,13 +26,13 @@ namespace Lego.Api.DbContexts
                     Description = "Go on magical adventures with Harry, Ron, and Hermione."
                 });
 
-            modelBuilder.Entity<Collection>().HasData(
-                new Collection("The Mid-Scale Starship Collection")
+            modelBuilder.Entity<Series>().HasData(
+                new Series("The Mid-Scale Starship Series")
                 {
                     Id = 1,
                     Description = "Small starships made for displaying."
                 },
-                new Collection("Ultimate Collector's Series")
+                new Series("Ultimate Collector's Series")
                 {
                     Id = 2,
                     Description = "Large sets made with the utmost care and focus on details."
@@ -48,7 +48,7 @@ namespace Lego.Api.DbContexts
                     1)
                 {
                     Id = 1,
-                    CollectionId = 1,
+                    SeriesId = 1,
                     Description = "A display piece of a Republic Era assault ship."
                 },
                 new Set(
@@ -71,7 +71,7 @@ namespace Lego.Api.DbContexts
                     1)
                 {
                     Id = 3,
-                    CollectionId = 2,
+                    SeriesId = 2,
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for."
                 });
 

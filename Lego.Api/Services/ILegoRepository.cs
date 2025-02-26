@@ -4,7 +4,7 @@ namespace Lego.Api.Services
 {
     public interface ILegoRepository
     {
-        Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? collectionId, string? searchQuery, int pageNumber, int pageSize);
+        Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? seriesId, string? searchQuery, int pageNumber, int pageSize);
         Task<Set?> GetSetAsync(int setId);
         void CreateSet(Set set);
         void DeleteSet(Set set);
@@ -15,9 +15,9 @@ namespace Lego.Api.Services
         void CreateTheme(Theme theme);
         void DeleteTheme(Theme theme);
         
-        Task<IEnumerable<Collection>> GetCollectionsAsync();
-        Task<Collection?> GetCollectionAsync(int collectionId);
-        Task<bool> CollectionExistsAsync(int collectionId);
+        Task<IEnumerable<Series>> GetSeriesAsync();
+        Task<Series?> GetSeriesAsync(int seriesId);
+        Task<bool> SeriesExistsAsync(int seriesId);
 
         Task<bool> SaveChangesAsync();
     }

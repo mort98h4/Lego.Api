@@ -28,7 +28,7 @@ namespace Lego.Api.Models
         /// <summary>
         /// The collection id of the set
         /// </summary>
-        public int? CollectionId { get; set; }
+        public int? SeriesId { get; set; }
 
         /// <summary>
         /// The number of parts included in the set
