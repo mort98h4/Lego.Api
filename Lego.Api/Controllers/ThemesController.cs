@@ -92,7 +92,7 @@ namespace Lego.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<ThemeDto>> CreateSet(ThemeForCreationDto theme)
+        public async Task<ActionResult<ThemeDto>> CreateTheme(ThemeForCreationDto theme)
         {
             var finalTheme = _mapper.Map<Theme>(theme);
 
