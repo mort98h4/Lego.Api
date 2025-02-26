@@ -106,5 +106,37 @@ namespace Lego.Api.Controllers
                 themeId = createdTheme.Id
             }, createdTheme);
         }
+
+        /// <summary>
+        /// Update a Lego theme
+        /// </summary>
+        /// <param name="themeId">The id of the theme to update</param>
+        /// <param name="theme">The theme for updating</param>
+        /// <returns>The updated theme</returns>
+        [HttpPut("{themeId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<ThemeDto>> UpdateTheme(int themeId, ThemeForUpdatingDto theme)
+        {
+            var themeEntity = await _legoRepository.GetThemeAsync(themeId);
+            if (themeEntity == null)
+            {
+                var message = $"Theme with id '{themeId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            theme.Name = string.IsNullOrWhiteSpace(theme.Name) ? themeEntity.Name : theme.Name;
+            theme.Description = theme.Description == null ? themeEntity.Description : theme.Description.Trim();
+            theme.Description = theme.Description == "" ? null : theme.Description;
+
+            var finalTheme = _mapper.Map(theme, themeEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            var updatedTheme = _mapper.Map<ThemeDto>(finalTheme);
+
+            return Ok(updatedTheme);
+        }
     }
 }

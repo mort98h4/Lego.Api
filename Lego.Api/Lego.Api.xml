@@ -95,6 +95,14 @@
             <param name="theme">The theme for creation</param>
             <returns>The newly created theme</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.UpdateTheme(System.Int32,Lego.Api.Models.ThemeForUpdatingDto)">
+            <summary>
+            Update a Lego theme
+            </summary>
+            <param name="themeId">The id of the theme to update</param>
+            <param name="theme">The theme for updating</param>
+            <returns>The updated theme</returns>
+        </member>
         <member name="T:Lego.Api.LegosDataStore">
             <summary>
             Temporary data store 
@@ -416,6 +424,21 @@
             </summary>
         </member>
         <member name="P:Lego.Api.Models.ThemeForCreationDto.Description">
+            <summary>
+            The description of the theme
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.ThemeForUpdatingDto">
+            <summary>
+            A Lego theme for updating
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeForUpdatingDto.Name">
+            <summary>
+            The name of the theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeForUpdatingDto.Description">
             <summary>
             The description of the theme
             </summary>
