@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
+using Lego.Api.Entities;
 using Lego.Api.Helpers;
 using Lego.Api.Models;
 using Lego.Api.Services;
@@ -81,6 +82,29 @@ namespace Lego.Api.Controllers
             }
 
             return Ok(_mapper.Map<ThemeDto>(theme));
+        }
+
+        /// <summary>
+        /// Create a new Lego theme
+        /// </summary>
+        /// <param name="theme">The theme for creation</param>
+        /// <returns>The newly created theme</returns>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<ThemeDto>> CreateSet(ThemeForCreationDto theme)
+        {
+            var finalTheme = _mapper.Map<Theme>(theme);
+
+            _legoRepository.CreateTheme(finalTheme);
+            await _legoRepository.SaveChangesAsync();
+
+            var createdTheme = _mapper.Map<ThemeDto>(finalTheme);
+
+            return CreatedAtRoute("GetTheme", new
+            {
+                themeId = createdTheme.Id
+            }, createdTheme);
         }
     }
 }

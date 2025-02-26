@@ -109,6 +109,11 @@ namespace Lego.Api.Services
             return await _context.Themes.AnyAsync(t => t.Id == themeId);
         }
 
+        public void CreateTheme(Theme theme)
+        {
+            _context.Themes.Add(theme);
+        }
+
         public async Task<IEnumerable<Collection>> GetCollectionsAsync()
         {
             return await _context.Collections

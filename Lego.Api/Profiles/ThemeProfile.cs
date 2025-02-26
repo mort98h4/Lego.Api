@@ -7,6 +7,7 @@ namespace Lego.Api.Profiles
         public ThemeProfile()
         {
             CreateMap<Entities.Theme, Models.ThemeDto>();
+            CreateMap<Models.ThemeForCreationDto, Entities.Theme>();
         }
     }
 }

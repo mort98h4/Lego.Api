@@ -12,6 +12,7 @@ namespace Lego.Api.Services
         Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Theme?> GetThemeAsync(int themeId);
         Task<bool> ThemeExistsAsync(int themeId);
+        void CreateTheme(Theme theme);
         
         Task<IEnumerable<Collection>> GetCollectionsAsync();
         Task<Collection?> GetCollectionAsync(int collectionId);

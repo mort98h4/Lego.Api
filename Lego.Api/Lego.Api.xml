@@ -88,6 +88,13 @@
             <param name="themeId">The id of the theme to get</param>
             <returns>A Lego theme</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.ThemesController.CreateSet(Lego.Api.Models.ThemeForCreationDto)">
+            <summary>
+            Create a new Lego theme
+            </summary>
+            <param name="theme">The theme for creation</param>
+            <returns>The newly created theme</returns>
+        </member>
         <member name="T:Lego.Api.LegosDataStore">
             <summary>
             Temporary data store 
@@ -394,6 +401,21 @@
             </summary>
         </member>
         <member name="P:Lego.Api.Models.ThemeDto.Description">
+            <summary>
+            The description of the theme
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.ThemeForCreationDto">
+            <summary>
+            A Lego theme for creation
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeForCreationDto.Name">
+            <summary>
+            The name of the theme
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.ThemeForCreationDto.Description">
             <summary>
             The description of the theme
             </summary>
