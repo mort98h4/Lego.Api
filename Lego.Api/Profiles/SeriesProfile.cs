@@ -2,9 +2,9 @@
 
 namespace Lego.Api.Profiles
 {
-    public class CollectionProfile : Profile
+    public class SeriesProfile : Profile
     {
-        public CollectionProfile()
+        public SeriesProfile()
         {
             CreateMap<Entities.Collection, Models.SeriesDto>();
             CreateMap<Models.SeriesDto, Entities.Collection>();
