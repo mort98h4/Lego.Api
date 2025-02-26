@@ -120,7 +120,7 @@ namespace Lego.Api.Controllers
                 }
             }
 
-            var finalSet = _mapper.Map<Entities.Set>(set);
+            var finalSet = _mapper.Map<Set>(set);
 
             _legoRepository.CreateSet(finalSet);
             await _legoRepository.SaveChangesAsync();
