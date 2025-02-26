@@ -34,6 +34,13 @@
             <param name="seriesId">The id of the series to get</param>
             <returns>A Lego series</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SeriesController.CreateSeries(Lego.Api.Models.SeriesForCreationDto)">
+            <summary>
+            Create a new Lego series
+            </summary>
+            <param name="series">The series for creation</param>
+            <returns>The newly created series</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets
@@ -118,7 +125,7 @@
             <param name="themeId">The id of the theme to get</param>
             <returns>A Lego theme</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.ThemesController.CreateSet(Lego.Api.Models.ThemeForCreationDto)">
+        <member name="M:Lego.Api.Controllers.ThemesController.CreateTheme(Lego.Api.Models.ThemeForCreationDto)">
             <summary>
             Create a new Lego theme
             </summary>
@@ -283,6 +290,21 @@
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SeriesDto.Description">
+            <summary>
+            The description of the series
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SeriesForCreationDto">
+            <summary>
+            A Lego series for creation
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesForCreationDto.Name">
+            <summary>
+            The name of the series
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SeriesForCreationDto.Description">
             <summary>
             The description of the series
             </summary>

@@ -154,6 +154,11 @@ namespace Lego.Api.Services
             return await _context.Series.AnyAsync(c => c.Id == seriesId);
         }
 
+        public void CreateSeries(Series series)
+        {
+            _context.Series.Add(series);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;

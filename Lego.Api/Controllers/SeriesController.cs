@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
+using Lego.Api.Entities;
 using Lego.Api.Helpers;
 using Lego.Api.Models;
 using Lego.Api.Services;
@@ -66,7 +67,7 @@ namespace Lego.Api.Controllers
         /// </summary>
         /// <param name="seriesId">The id of the series to get</param>
         /// <returns>A Lego series</returns>
-        [HttpGet("{seriesId}")]
+        [HttpGet("{seriesId}", Name = "GetSeries")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -81,6 +82,29 @@ namespace Lego.Api.Controllers
             }
 
             return Ok(_mapper.Map<SeriesDto>(series));
+        }
+
+        /// <summary>
+        /// Create a new Lego series
+        /// </summary>
+        /// <param name="series">The series for creation</param>
+        /// <returns>The newly created series</returns>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<ThemeDto>> CreateSeries(SeriesForCreationDto series)
+        {
+            var finalSeries = _mapper.Map<Series>(series);
+
+            _legoRepository.CreateSeries(finalSeries);
+            await _legoRepository.SaveChangesAsync();
+
+            var createdSeries = _mapper.Map<SeriesDto>(finalSeries);
+
+            return CreatedAtRoute("GetSeries", new
+            {
+                seriesId = createdSeries.Id
+            }, createdSeries);
         }
     }
 }

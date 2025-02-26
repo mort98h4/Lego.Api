@@ -18,6 +18,7 @@ namespace Lego.Api.Services
         Task<(IEnumerable<Series>, PaginationMetadata)> GetSeriesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Series?> GetSeriesByIdAsync(int seriesId);
         Task<bool> SeriesExistsAsync(int seriesId);
+        void CreateSeries(Series series);
 
         Task<bool> SaveChangesAsync();
     }

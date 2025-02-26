@@ -7,7 +7,7 @@ namespace Lego.Api.Profiles
         public SeriesProfile()
         {
             CreateMap<Entities.Series, Models.SeriesDto>();
-            CreateMap<Models.SeriesDto, Entities.Series>();
+            CreateMap<Models.SeriesForCreationDto, Entities.Series>();
         }
     }
 }
