@@ -13,7 +13,7 @@
         /// <summary>
         /// The part number of the part
         /// </summary>
-        public string PartNo { get; set; } = string.Empty;
+        public string PieceNo { get; set; } = string.Empty;
 
         /// <summary>
         /// The color of the part

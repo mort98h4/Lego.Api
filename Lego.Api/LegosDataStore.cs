@@ -37,14 +37,14 @@ namespace Lego.Api
                 new PieceDto()
                 {
                     Id = 1,
-                    PartNo = "30055",
+                    PieceNo = "30055",
                     Color = "Brown",
                     Description = "Fence 1 x 4 x 2 Spindled with 2 Studs"
                 },
                 new PieceDto()
                 {
                     Id = 2,
-                    PartNo = "30374px1",
+                    PieceNo = "30374px1",
                     Color = "Dark Nougat",
                     Description = "Bar 4L (Lightsaber Blade / Wand) with Black Extended Half Circle and Dots Pattern (Musical Instrument, Flute)"
                 }
