@@ -172,7 +172,7 @@
             List of Lego sets
             </summary>
         </member>
-        <member name="P:Lego.Api.LegosDataStore.Parts">
+        <member name="P:Lego.Api.LegosDataStore.Pieces">
             <summary>
             List of Lego parts
             </summary>
@@ -276,27 +276,39 @@
         <member name="M:Lego.Api.Migrations.PartRenamedToPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Lego.Api.Models.PartDto">
+        <member name="T:Lego.Api.Migrations.AddPendingChangesToContextModel">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddPendingChangesToContextModel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddPendingChangesToContextModel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddPendingChangesToContextModel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lego.Api.Models.PieceDto">
             <summary>
             A Lego part
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PartDto.Id">
+        <member name="P:Lego.Api.Models.PieceDto.Id">
             <summary>
             The id of the part
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PartDto.PartNo">
+        <member name="P:Lego.Api.Models.PieceDto.PartNo">
             <summary>
             The part number of the part
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PartDto.Color">
+        <member name="P:Lego.Api.Models.PieceDto.Color">
             <summary>
             The color of the part
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PartDto.Description">
+        <member name="P:Lego.Api.Models.PieceDto.Description">
             <summary>
             The description of the part
             </summary>
@@ -383,7 +395,7 @@
         </member>
         <member name="P:Lego.Api.Models.SetDto.NoOfPieces">
             <summary>
-            The number of parts included in the set
+            The number of pieces included in the set
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetDto.Description">
@@ -401,19 +413,19 @@
             If the set still has it's box
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.HasMissingParts">
+        <member name="P:Lego.Api.Models.SetDto.HasMissingPieces">
             <summary>
-            If the set has missing parts
+            If the set has missing pieces
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.NoOfMissingParts">
+        <member name="P:Lego.Api.Models.SetDto.NoOfMissingPieces">
             <summary>
-            The number of missing parts
+            The number of missing pieces
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.MissingParts">
+        <member name="P:Lego.Api.Models.SetDto.MissingPieces">
             <summary>
-            A list of the missing parts
+            A list of the missing pieces
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SetForCreationDto">
@@ -443,7 +455,7 @@
         </member>
         <member name="P:Lego.Api.Models.SetForCreationDto.NoOfPieces">
             <summary>
-            The number of parts included in the set
+            The number of pieces included in the set
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetForCreationDto.Description">
@@ -488,7 +500,7 @@
         </member>
         <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfPieces">
             <summary>
-            The number of parts included in the set
+            The number of pieces included in the set
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetForUpdatingDto.Description">

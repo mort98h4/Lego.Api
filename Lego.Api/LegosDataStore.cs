@@ -15,7 +15,7 @@ namespace Lego.Api
         /// <summary>
         /// List of Lego parts
         /// </summary>
-        public List<PieceDto> Parts { get; set; }
+        public List<PieceDto> Pieces { get; set; }
 
         /// <summary>
         /// List of themes
@@ -32,7 +32,7 @@ namespace Lego.Api
         /// </summary>
         public LegosDataStore() 
         {
-            Parts = new List<PieceDto>()
+            Pieces = new List<PieceDto>()
             {
                 new PieceDto()
                 {
@@ -102,7 +102,7 @@ namespace Lego.Api
                     Name = "Acclamator-Class Assault Ship",
                     Theme = Themes[0],
                     Series = Collections[0],
-                    NoOfParts = 450,
+                    NoOfPieces = 450,
                     Description = "A display piece of a Republic Era assault ship.",
                     IsSealed = false,
                     HasBox = true,
@@ -113,13 +113,13 @@ namespace Lego.Api
                     ModelNo = "4707",
                     Name = "Hagrid's Hut",
                     Theme = Themes[1],
-                    NoOfParts = 288,
+                    NoOfPieces = 288,
                     Description = "The first edition of Hagrid's Hut.",
                     IsSealed = false,
                     HasBox = false,
-                    MissingParts = new List<PieceDto>()
+                    MissingPieces = new List<PieceDto>()
                     {
-                        Parts[0]
+                        Pieces[0]
                     }
                 },
                 new SetDto()
@@ -129,7 +129,7 @@ namespace Lego.Api
                     Name = "AT-AT",
                     Theme = Themes[0],
                     Series = Collections[2],
-                    NoOfParts = 6785,
+                    NoOfPieces = 6785,
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for.",
                     IsSealed = false,
                     HasBox = true,
