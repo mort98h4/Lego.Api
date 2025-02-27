@@ -22,6 +22,7 @@ namespace Lego.Api.Services
         void DeleteSeries(Series series);
 
         Task<(IEnumerable<Piece>, PaginationMetadata)> GetPiecesAsync(string? searchQuery, int pageNumber, int pageSize);
+        Task<Piece?> GetPieceByIdAsync(int pieceId);
 
         Task<bool> SaveChangesAsync();
     }

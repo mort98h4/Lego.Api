@@ -27,6 +27,13 @@
             <param name="pageSize">Number of pieces to return</param>
             <returns>A list of Lego pieces</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.PiecesController.GetPiece(System.Int32)">
+            <summary>
+            Get a Lego piece by id
+            </summary>
+            <param name="pieceId">The id of the piece to get</param>
+            <returns>A Lego piece</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SeriesController">
             <summary>
             API Controller of Lego series

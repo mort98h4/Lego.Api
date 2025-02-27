@@ -188,6 +188,11 @@ namespace Lego.Api.Services
             return (piecesToReturn, paginationMetadata);
         }
 
+        public async Task<Piece?> GetPieceByIdAsync(int pieceId)
+        {
+            return await _context.Pieces.Where(p => p.Id == pieceId).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;

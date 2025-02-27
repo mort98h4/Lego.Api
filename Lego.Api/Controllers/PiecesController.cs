@@ -60,5 +60,27 @@ namespace Lego.Api.Controllers
 
             return Ok(_mapper.Map<IEnumerable<PieceDto>>(pieceEntities));
         }
+
+        /// <summary>
+        /// Get a Lego piece by id
+        /// </summary>
+        /// <param name="pieceId">The id of the piece to get</param>
+        /// <returns>A Lego piece</returns>
+        [HttpGet("{pieceId}", Name = "GetPiece")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPiece(int pieceId)
+        {
+            var piece = await _legoRepository.GetPieceByIdAsync(pieceId);
+            if (piece == null)
+            {
+                var message = $"Piece with id '{pieceId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            return Ok(_mapper.Map<PieceDto>(piece));
+        }
     }
 }
