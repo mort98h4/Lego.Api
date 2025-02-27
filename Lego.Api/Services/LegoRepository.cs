@@ -193,6 +193,11 @@ namespace Lego.Api.Services
             return await _context.Pieces.Where(p => p.Id == pieceId).FirstOrDefaultAsync();
         }
 
+        public void CreatePiece(Piece piece)
+        {
+            _context.Pieces.Add(piece);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;

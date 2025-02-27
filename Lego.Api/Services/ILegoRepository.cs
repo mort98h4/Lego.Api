@@ -23,6 +23,7 @@ namespace Lego.Api.Services
 
         Task<(IEnumerable<Piece>, PaginationMetadata)> GetPiecesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Piece?> GetPieceByIdAsync(int pieceId);
+        void CreatePiece(Piece piece);
 
         Task<bool> SaveChangesAsync();
     }

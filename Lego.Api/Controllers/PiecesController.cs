@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
+using Lego.Api.Entities;
 using Lego.Api.Helpers;
 using Lego.Api.Models;
 using Lego.Api.Services;
@@ -81,6 +82,29 @@ namespace Lego.Api.Controllers
             }
 
             return Ok(_mapper.Map<PieceDto>(piece));
+        }
+
+        /// <summary>
+        /// Create a new Lego piece
+        /// </summary>
+        /// <param name="piece">The piece for creation</param>
+        /// <returns>The newly created piece</returns>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<PieceDto>> CreatePiece(PieceForCreationDto piece)
+        {
+            var finalPiece = _mapper.Map<Piece>(piece);
+
+            _legoRepository.CreatePiece(finalPiece);
+            await _legoRepository.SaveChangesAsync();
+
+            var createdPiece = _mapper.Map<PieceDto>(finalPiece);
+
+            return CreatedAtRoute("GetPiece", new
+            {
+                pieceId = createdPiece.Id
+            }, createdPiece);
         }
     }
 }

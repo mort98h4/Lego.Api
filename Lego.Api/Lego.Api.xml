@@ -34,6 +34,13 @@
             <param name="pieceId">The id of the piece to get</param>
             <returns>A Lego piece</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.PiecesController.CreatePiece(Lego.Api.Models.PieceForCreationDto)">
+            <summary>
+            Create a new Lego piece
+            </summary>
+            <param name="piece">The piece for creation</param>
+            <returns>The newly created piece</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SeriesController">
             <summary>
             API Controller of Lego series
@@ -341,6 +348,26 @@
         <member name="P:Lego.Api.Models.PieceDto.Description">
             <summary>
             The description of the part
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.PieceForCreationDto">
+            <summary>
+            A Lego piece for creation
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PieceForCreationDto.PieceNo">
+            <summary>
+            The piece number of the piece
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PieceForCreationDto.Color">
+            <summary>
+            The color of the piece
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.PieceForCreationDto.Description">
+            <summary>
+            The description of the piece
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SeriesDto">
