@@ -106,5 +106,37 @@ namespace Lego.Api.Controllers
                 pieceId = createdPiece.Id
             }, createdPiece);
         }
+
+        /// <summary>
+        /// Update a Lego piece
+        /// </summary>
+        /// <param name="pieceId">The id of the piece to update</param>
+        /// <param name="piece">The piece for updating</param>
+        /// <returns>The updated piece</returns>
+        [HttpPut("{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<PieceDto>> UpdatePiece(int pieceId, PieceForUpdatingDto piece)
+        {
+            var pieceEntity = await _legoRepository.GetPieceByIdAsync(pieceId);
+            if (pieceEntity == null)
+            {
+                var message = $"Piece with id '{pieceId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            piece.PieceNo = string.IsNullOrWhiteSpace(piece.PieceNo) ? pieceEntity.PieceNo : piece.PieceNo;
+            piece.Color = string.IsNullOrWhiteSpace(piece.Color) ? pieceEntity.Color : piece.Color;
+            piece.Description = string.IsNullOrWhiteSpace(piece.Description) ? pieceEntity.Description : piece.Description;
+
+            var finalPiece = _mapper.Map(piece, pieceEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            var updatedPiece = _mapper.Map<PieceDto>(finalPiece);
+
+            return Ok(updatedPiece);
+        }
     }
 }
