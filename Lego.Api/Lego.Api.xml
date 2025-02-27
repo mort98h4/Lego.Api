@@ -340,29 +340,41 @@
         <member name="M:Lego.Api.Migrations.AddPendingChangesToContextModel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:Lego.Api.Models.PieceDto">
             <summary>
-            A Lego part
+            A Lego piece
             </summary>
         </member>
         <member name="P:Lego.Api.Models.PieceDto.Id">
             <summary>
-            The id of the part
+            The id of the piece
             </summary>
         </member>
         <member name="P:Lego.Api.Models.PieceDto.PieceNo">
             <summary>
-            The part number of the part
+            The part number of the piece
             </summary>
         </member>
         <member name="P:Lego.Api.Models.PieceDto.Color">
             <summary>
-            The color of the part
+            The color of the piece
             </summary>
         </member>
         <member name="P:Lego.Api.Models.PieceDto.Description">
             <summary>
-            The description of the part
+            The description of the piece
             </summary>
         </member>
         <member name="T:Lego.Api.Models.PieceForCreationDto">
@@ -608,6 +620,26 @@
         <member name="P:Lego.Api.Models.SetForUpdatingDto.HasBox">
             <summary>
             If the set still has it's box
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetMissingPieceDto">
+            <summary>
+            A missing piece of a Lego set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetMissingPieceDto.SetId">
+            <summary>
+            The id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetMissingPieceDto.Piece">
+            <summary>
+            The piece that is missing
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetMissingPieceDto.Quantity">
+            <summary>
+            The number of this type of piece that is missing
             </summary>
         </member>
         <member name="T:Lego.Api.Models.ThemeDto">

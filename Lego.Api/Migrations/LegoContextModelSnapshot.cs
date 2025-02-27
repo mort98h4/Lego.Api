@@ -247,17 +247,21 @@ namespace Lego.Api.Migrations
 
             modelBuilder.Entity("SetsMissingPieces", b =>
                 {
-                    b.HasOne("Lego.Api.Entities.Piece", null)
+                    b.HasOne("Lego.Api.Entities.Piece", "Piece")
                         .WithMany()
                         .HasForeignKey("PieceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Lego.Api.Entities.Set", null)
+                    b.HasOne("Lego.Api.Entities.Set", "Set")
                         .WithMany()
                         .HasForeignKey("SetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Piece");
+
+                    b.Navigation("Set");
                 });
 #pragma warning restore 612, 618
         }

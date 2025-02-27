@@ -1,4 +1,5 @@
-﻿using Asp.Versioning;
+﻿using System.ComponentModel;
+using Asp.Versioning;
 using AutoMapper;
 using Lego.Api.Entities;
 using Lego.Api.Helpers;
@@ -224,6 +225,41 @@ namespace Lego.Api.Controllers
             await _legoRepository.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpPost("{setId}/missingPieces/{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<SetMissingPieceDto>> AddMissingPiece(int setId, int pieceId)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found while trying to add a missing piece.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var pieceEntity = await _legoRepository.GetPieceByIdAsync(pieceId);
+            if (pieceEntity == null)
+            {
+                var message = $"Piece with id '{pieceId}' was not found while trying to add it to missing pieces of set with id '{setId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var finalMissingPiece = new SetPiece()
+            {
+                SetId = setId,
+                PieceId = pieceId
+            };
+
+            _legoRepository.AddMissingPiece(finalMissingPiece);
+            await _legoRepository.SaveChangesAsync();
+
+            var createdMissingPiece = _mapper.Map<SetMissingPieceDto>(finalMissingPiece);
+
+            return Ok(createdMissingPiece);
         }
     }
 }

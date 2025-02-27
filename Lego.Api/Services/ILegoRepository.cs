@@ -6,8 +6,10 @@ namespace Lego.Api.Services
     {
         Task<(IEnumerable<Set>, PaginationMetadata)> GetSetsAsync(int? themeId, int? seriesId, string? searchQuery, int pageNumber, int pageSize);
         Task<Set?> GetSetByIdAsync(int setId);
+        Task<bool> SetExistsAsync(int setId);
         void CreateSet(Set set);
         void DeleteSet(Set set);
+        void AddMissingPiece(SetPiece setPiece);
 
         Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Theme?> GetThemeByIdAsync(int themeId);

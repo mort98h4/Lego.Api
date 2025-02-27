@@ -64,6 +64,11 @@ namespace Lego.Api.Services
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<bool> SetExistsAsync(int setId)
+        {
+            return await _context.Sets.AnyAsync(s => s.Id == setId);
+        }
+
         public void CreateSet(Set set)
         {
             _context.Sets.Add(set);
@@ -72,6 +77,13 @@ namespace Lego.Api.Services
         public void DeleteSet(Set set)
         {
             _context.Sets.Remove(set);
+        }
+
+        public void AddMissingPiece(SetPiece setPiece)
+        {
+            var set = _context.Sets.FirstOrDefault(s => s.Id == setPiece.SetId);
+            var piece = _context.Pieces.FirstOrDefault(p => p.Id == setPiece.PieceId);
+            set.MissingPieces.Add(piece);
         }
 
         public async Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize)
