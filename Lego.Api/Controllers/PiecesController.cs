@@ -138,5 +138,30 @@ namespace Lego.Api.Controllers
 
             return Ok(updatedPiece);
         }
+
+        /// <summary>
+        /// Delete a Lego piece
+        /// </summary>
+        /// <param name="pieceId">The id of the piece for deletion</param>
+        /// <returns>No content</returns>
+        [HttpDelete("{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeletePiece(int pieceId)
+        {
+            var pieceEntity = await _legoRepository.GetPieceByIdAsync(pieceId);
+            if (pieceEntity == null)
+            {
+                var message = $"Piece with id '{pieceId}' was not found.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            _legoRepository.DeletePiece(pieceEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

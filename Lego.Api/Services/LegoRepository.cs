@@ -198,6 +198,11 @@ namespace Lego.Api.Services
             _context.Pieces.Add(piece);
         }
 
+        public void DeletePiece(Piece piece)
+        {
+            _context.Pieces.Remove(piece);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;

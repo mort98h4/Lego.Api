@@ -49,6 +49,13 @@
             <param name="piece">The piece for updating</param>
             <returns>The updated piece</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.PiecesController.DeletePiece(System.Int32)">
+            <summary>
+            Delete a Lego piece
+            </summary>
+            <param name="pieceId">The id of the piece for deletion</param>
+            <returns>No content</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SeriesController">
             <summary>
             API Controller of Lego series
