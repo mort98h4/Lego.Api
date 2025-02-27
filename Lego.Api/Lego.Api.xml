@@ -4,6 +4,29 @@
         <name>Lego.Api</name>
     </assembly>
     <members>
+        <member name="T:Lego.Api.Controllers.PiecesController">
+            <summary>
+            API Controller of Lego pieces
+            </summary>
+        </member>
+        <member name="M:Lego.Api.Controllers.PiecesController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SeriesController},Lego.Api.Services.ILegoRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="legoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Lego.Api.Controllers.PiecesController.GetPieces(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get all Lego pieces
+            </summary>
+            <param name="searchQuery">Search Lego pieces by piece number, color or description</param>
+            <param name="pageNumber">The page to return</param>
+            <param name="pageSize">Number of pieces to return</param>
+            <returns>A list of Lego pieces</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SeriesController">
             <summary>
             API Controller of Lego series
@@ -298,7 +321,7 @@
             The id of the part
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceDto.PartNo">
+        <member name="P:Lego.Api.Models.PieceDto.PieceNo">
             <summary>
             The part number of the part
             </summary>

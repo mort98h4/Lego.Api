@@ -134,13 +134,13 @@ namespace Lego.Api.Services
             var totalItemCount = await series.CountAsync();
             var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
 
-            var themesToReturn = await series
+            var seriesToReturn = await series
                 .OrderBy(t => t.Name)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToListAsync();
 
-            return (themesToReturn, paginationMetadata);
+            return (seriesToReturn, paginationMetadata);
         }
 
         public async Task<Series?> GetSeriesByIdAsync(int seriesId)
@@ -162,6 +162,30 @@ namespace Lego.Api.Services
         public void DeleteSeries(Series series)
         {
             _context.Series.Remove(series);
+        }
+
+        public async Task<(IEnumerable<Piece>, PaginationMetadata)> GetPiecesAsync(string? searchQuery, int pageNumber, int pageSize)
+        {
+            var pieces = _context.Pieces as IQueryable<Piece>;
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                pieces = pieces.Where(p =>
+                    p.PieceNo.ToLower().Contains(searchQuery) ||
+                    p.Color.ToLower().Contains(searchQuery) ||
+                    p.Description.ToLower().Contains(searchQuery));
+            }
+
+            var totalItemCount = await pieces.CountAsync();
+            var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
+
+            var piecesToReturn = await pieces
+                .OrderBy(p => p.PieceNo)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (piecesToReturn, paginationMetadata);
         }
 
         public async Task<bool> SaveChangesAsync()
