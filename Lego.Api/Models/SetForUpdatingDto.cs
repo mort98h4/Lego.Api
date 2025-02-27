@@ -31,10 +31,10 @@ namespace Lego.Api.Models
         public int? SeriesId { get; set; }
 
         /// <summary>
-        /// The number of parts included in the set
+        /// The number of pieces included in the set
         /// </summary>
-        [Range(1, Int32.MaxValue, ErrorMessage = "Number of parts must be at least 1")]
-        public int? NoOfParts { get; set; }
+        [Range(1, Int32.MaxValue, ErrorMessage = "Number of pieces must be at least 1")]
+        public int? NoOfPieces { get; set; }
 
         /// <summary>
         /// The description of the set
@@ -53,8 +53,8 @@ namespace Lego.Api.Models
         public bool? HasBox { get; set; }
 
         ///// <summary>
-        ///// A list of the missing parts
+        ///// A list of the missing pieces
         ///// </summary>
-        //public ICollection<PartDto>? MissingParts { get; set; }
+        //public ICollection<PartDto>? MissingPieces { get; set; }
     }
 }

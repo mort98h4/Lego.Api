@@ -34,11 +34,11 @@ namespace Lego.Api.Models
         public int? SeriesId { get; set; }
 
         /// <summary>
-        /// The number of parts included in the set
+        /// The number of pieces included in the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide the number of parts")]
-        [Range(1, Int32.MaxValue, ErrorMessage = "Number of parts must be at least 1")]
-        public int NoOfParts { get; set; }
+        [Required(ErrorMessage = "You must provide the number of pieces")]
+        [Range(1, Int32.MaxValue, ErrorMessage = "Number of pieces must be at least 1")]
+        public int NoOfPieces { get; set; }
 
         /// <summary>
         /// The description of the set

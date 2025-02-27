@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lego.Api.Entities
 {
-    public class Part
+    public class Piece
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -11,7 +11,7 @@ namespace Lego.Api.Entities
 
         [Required]
         [StringLength(50)]
-        public string PartNo { get; set; }
+        public string PieceNo { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -33,9 +33,9 @@ namespace Lego.Api.Entities
         //[Required]
         //public int SetId { get; set; }
 
-        public Part(string partNo, string color, string description)
+        public Piece(string pieceNo, string color, string description)
         {
-            PartNo = partNo;
+            PieceNo = pieceNo;
             Color = color;
             Description = description;
             //Quantity = quantity;

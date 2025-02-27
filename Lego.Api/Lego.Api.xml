@@ -264,6 +264,18 @@
         <member name="M:Lego.Api.Migrations.UpdatedCollectionToSeries.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Lego.Api.Migrations.PartRenamedToPiece">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartRenamedToPiece.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartRenamedToPiece.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lego.Api.Migrations.PartRenamedToPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:Lego.Api.Models.PartDto">
             <summary>
             A Lego part
@@ -369,7 +381,7 @@
             The collection of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.NoOfParts">
+        <member name="P:Lego.Api.Models.SetDto.NoOfPieces">
             <summary>
             The number of parts included in the set
             </summary>
@@ -429,7 +441,7 @@
             The collection id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.NoOfParts">
+        <member name="P:Lego.Api.Models.SetForCreationDto.NoOfPieces">
             <summary>
             The number of parts included in the set
             </summary>
@@ -474,7 +486,7 @@
             The collection id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfParts">
+        <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfPieces">
             <summary>
             The number of parts included in the set
             </summary>

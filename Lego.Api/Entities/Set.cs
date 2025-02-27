@@ -30,7 +30,7 @@ namespace Lego.Api.Entities
 
         [Required]
         [Range(1, Int32.MaxValue)]
-        public int NoOfParts { get; set; }
+        public int NoOfPieces { get; set; }
 
         [StringLength(200)]
         public string? Description { get; set; }
@@ -43,14 +43,14 @@ namespace Lego.Api.Entities
         [Range(0, 1)]
         public int HasBox { get; set; }
 
-        public ICollection<Part> MissingParts { get; } = new List<Part>();
+        public ICollection<Piece> MissingPieces { get; } = new List<Piece>();
 
-        public Set(string modelNo, string name, int themeId, int noOfParts, int isSealed, int hasBox)
+        public Set(string modelNo, string name, int themeId, int noOfPieces, int isSealed, int hasBox)
         {
             ModelNo = modelNo;
             Name = name;
             ThemeId = themeId;
-            NoOfParts = noOfParts;
+            NoOfPieces = noOfPieces;
             IsSealed = isSealed;
             HasBox = hasBox;
         }

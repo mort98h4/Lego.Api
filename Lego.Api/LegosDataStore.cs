@@ -15,7 +15,7 @@ namespace Lego.Api
         /// <summary>
         /// List of Lego parts
         /// </summary>
-        public List<PartDto> Parts { get; set; }
+        public List<PieceDto> Parts { get; set; }
 
         /// <summary>
         /// List of themes
@@ -32,16 +32,16 @@ namespace Lego.Api
         /// </summary>
         public LegosDataStore() 
         {
-            Parts = new List<PartDto>()
+            Parts = new List<PieceDto>()
             {
-                new PartDto()
+                new PieceDto()
                 {
                     Id = 1,
                     PartNo = "30055",
                     Color = "Brown",
                     Description = "Fence 1 x 4 x 2 Spindled with 2 Studs"
                 },
-                new PartDto()
+                new PieceDto()
                 {
                     Id = 2,
                     PartNo = "30374px1",
@@ -117,7 +117,7 @@ namespace Lego.Api
                     Description = "The first edition of Hagrid's Hut.",
                     IsSealed = false,
                     HasBox = false,
-                    MissingParts = new List<PartDto>()
+                    MissingParts = new List<PieceDto>()
                     {
                         Parts[0]
                     }

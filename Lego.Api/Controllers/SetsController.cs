@@ -189,7 +189,7 @@ namespace Lego.Api.Controllers
             set.ThemeId = set.ThemeId > 0 ? set.ThemeId : setEntity.ThemeId;
             set.Description = set.Description == null ? setEntity.Description : set.Description.Trim();
             set.Description = set.Description == "" ? null : set.Description;
-            set.NoOfParts = set.NoOfParts > 0 ? set.NoOfParts : setEntity.NoOfParts;
+            set.NoOfPieces = set.NoOfPieces > 0 ? set.NoOfPieces : setEntity.NoOfPieces;
             set.IsSealed = set.IsSealed != null ? set.IsSealed : Convert.ToBoolean(setEntity.IsSealed);
             set.HasBox = set.HasBox != null ? set.HasBox : Convert.ToBoolean(setEntity.HasBox);
 

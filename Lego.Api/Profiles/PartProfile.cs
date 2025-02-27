@@ -6,7 +6,7 @@ namespace Lego.Api.Profiles
     {
         public PartProfile()
         {
-            CreateMap<Entities.Part, Models.PartDto>();
+            CreateMap<Entities.Piece, Models.PieceDto>();
         }
     }
 }

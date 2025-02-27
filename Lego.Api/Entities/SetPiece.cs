@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lego.Api.Entities
 {
-    public class SetPart
+    public class SetPiece
     {
         [ForeignKey("SetId")]
         [Required]
         public int SetId { get; set; }
 
-        [ForeignKey("PartId")]
+        [ForeignKey("PieceId")]
         [Required]
-        public int PartId { get; set; }
+        public int PieceId { get; set; }
 
         public int Quantity { get; set; }
     }

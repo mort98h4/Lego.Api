@@ -31,9 +31,9 @@
         public SeriesDto? Series { get; set; }
 
         /// <summary>
-        /// The number of parts included in the set
+        /// The number of pieces included in the set
         /// </summary>
-        public int NoOfParts {get; set; }
+        public int NoOfPieces {get; set; }
 
         /// <summary>
         /// The description of the set
@@ -51,30 +51,30 @@
         public bool HasBox { get; set; }
 
         /// <summary>
-        /// If the set has missing parts
+        /// If the set has missing pieces
         /// </summary>
-        public bool HasMissingParts
+        public bool HasMissingPieces
         {
             get
             {
-                return MissingParts?.Count != 0;
+                return MissingPieces?.Count != 0;
             }
         }
 
         /// <summary>
-        /// The number of missing parts
+        /// The number of missing pieces
         /// </summary>
-        public int? NoOfMissingParts
+        public int? NoOfMissingPieces
         {
             get
             {
-                return MissingParts?.Count;
+                return MissingPieces?.Count;
             }
         }
 
         /// <summary>
-        /// A list of the missing parts
+        /// A list of the missing pieces
         /// </summary>
-        public ICollection<PartDto>? MissingParts { get; set; } = new List<PartDto>();
+        public ICollection<PieceDto>? MissingPieces { get; set; } = new List<PieceDto>();
     }
 }

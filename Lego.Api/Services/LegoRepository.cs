@@ -46,7 +46,7 @@ namespace Lego.Api.Services
             var setsToReturn = await sets
                 .Include(s => s.Theme)
                 .Include(s => s.Series)
-                .Include(s => s.MissingParts)
+                .Include(s => s.MissingPieces)
                 .OrderBy(s => s.ModelNo)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
@@ -60,7 +60,7 @@ namespace Lego.Api.Services
             return await _context.Sets.Where(s => s.Id == setId)
                 .Include(s => s.Theme)
                 .Include(s => s.Series)
-                .Include(s => s.MissingParts)
+                .Include(s => s.MissingPieces)
                 .FirstOrDefaultAsync();
         }
 

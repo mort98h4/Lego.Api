@@ -6,7 +6,7 @@ namespace Lego.Api.DbContexts
     public class LegoContext : DbContext
     {
         public DbSet<Set> Sets { get; set; }
-        public DbSet<Part> Parts { get; set; }
+        public DbSet<Piece> Pieces { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Series> Series { get; set; }
 
@@ -75,8 +75,8 @@ namespace Lego.Api.DbContexts
                     Description = "This is the AT-AT that alle Lego Star Wars collectors have been waiting for."
                 });
 
-            modelBuilder.Entity<Part>().HasData(
-                new Part(
+            modelBuilder.Entity<Piece>().HasData(
+                new Piece(
                     "30055",
                     "Brown",
                     "Fence 1 x 4 x 2 Spindled with 2 Studs")
@@ -85,16 +85,16 @@ namespace Lego.Api.DbContexts
                 });
 
             modelBuilder.Entity<Set>()
-                .HasMany(e => e.MissingParts)
+                .HasMany(e => e.MissingPieces)
                 .WithMany(e => e.Sets)
-                .UsingEntity<SetPart>("SetsMissingParts", j =>
+                .UsingEntity<SetPiece>("SetsMissingPieces", j =>
                 {
                     j.Property(e => e.Quantity).HasDefaultValue(1);
                     j.HasData(
-                        new SetPart
+                        new SetPiece
                         {
                             SetId = 2,
-                            PartId = 1,
+                            PieceId = 1,
                             Quantity = 1
                         }
                     );

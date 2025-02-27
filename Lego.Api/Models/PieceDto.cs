@@ -3,7 +3,7 @@
     /// <summary>
     /// A Lego part
     /// </summary>
-    public class PartDto
+    public class PieceDto
     {
         /// <summary>
         /// The id of the part
