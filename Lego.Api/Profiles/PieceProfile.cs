@@ -2,9 +2,9 @@
 
 namespace Lego.Api.Profiles
 {
-    public class PartProfile : Profile
+    public class PieceProfile : Profile
     {
-        public PartProfile()
+        public PieceProfile()
         {
             CreateMap<Entities.Piece, Models.PieceDto>();
         }
