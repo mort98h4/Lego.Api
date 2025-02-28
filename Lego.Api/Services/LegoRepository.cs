@@ -2,6 +2,7 @@
 using Lego.Api.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace Lego.Api.Services
 {
@@ -60,8 +61,26 @@ namespace Lego.Api.Services
             return await _context.Sets.Where(s => s.Id == setId)
                 .Include(s => s.Theme)
                 .Include(s => s.Series)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<(Set?, IEnumerable<SetPiece>)> GetSetWithMissingPiecesByIdAsync(int setId)
+        {
+            var set = await _context.Sets.Where(s => s.Id == setId)
+                .Include(s => s.Theme)
+                .Include(s => s.Series)
                 .Include(s => s.MissingPieces)
                 .FirstOrDefaultAsync();
+
+            var missingPieces = new List<SetPiece>();
+
+            if (set != null)
+            {
+                missingPieces = await _context.SetMissingPieces.Where(mp => mp.SetId == setId).Include(mp => mp.Piece)
+                    .ToListAsync();
+            }
+
+            return (set, missingPieces);
         }
 
         public async Task<bool> SetExistsAsync(int setId)
@@ -81,9 +100,7 @@ namespace Lego.Api.Services
 
         public void AddMissingPiece(SetPiece setPiece)
         {
-            var set = _context.Sets.FirstOrDefault(s => s.Id == setPiece.SetId);
-            var piece = _context.Pieces.FirstOrDefault(p => p.Id == setPiece.PieceId);
-            set.MissingPieces.Add(piece);
+            _context.SetMissingPieces.Add(setPiece);
         }
 
         public async Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize)
