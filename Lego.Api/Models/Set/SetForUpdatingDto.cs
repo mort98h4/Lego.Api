@@ -1,32 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lego.Api.Models
+namespace Lego.Api.Models.Set
 {
     /// <summary>
-    /// A Lego set for creation
+    /// A Lego set for updating
     /// </summary>
-    public class SetForCreationDto
+    public class SetForUpdatingDto
     {
         /// <summary>
         /// The model number of the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide a model number")]
         [MaxLength(10)]
         [RegularExpression("^[1-9][0-9-]*$", ErrorMessage = "Model number may only contain digits and dashes, and the first digit should be more than zero.")]
-        public string ModelNo { get; set; } = string.Empty;
+        public string? ModelNo { get; set; }
 
         /// <summary>
         /// The name of the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide a name")]
         [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
         /// <summary>
         /// The theme id of the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide a theme id")]
-        public int ThemeId { get; set; }
+        public int? ThemeId { get; set; }
 
         /// <summary>
         /// The collection id of the set
@@ -36,9 +33,8 @@ namespace Lego.Api.Models
         /// <summary>
         /// The number of pieces included in the set
         /// </summary>
-        [Required(ErrorMessage = "You must provide the number of pieces")]
-        [Range(1, Int32.MaxValue, ErrorMessage = "Number of pieces must be at least 1")]
-        public int NoOfPieces { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Number of pieces must be at least 1")]
+        public int? NoOfPieces { get; set; }
 
         /// <summary>
         /// The description of the set
@@ -49,11 +45,16 @@ namespace Lego.Api.Models
         /// <summary>
         /// If the set is sealed
         /// </summary>
-        public bool IsSealed { get; set; }
+        public bool? IsSealed { get; set; }
 
         /// <summary>
         /// If the set still has it's box
         /// </summary>
-        public bool HasBox { get; set; }
+        public bool? HasBox { get; set; }
+
+        ///// <summary>
+        ///// A list of the missing pieces
+        ///// </summary>
+        //public ICollection<PartDto>? MissingPieces { get; set; }
     }
 }

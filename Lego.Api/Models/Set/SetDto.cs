@@ -1,9 +1,13 @@
-﻿namespace Lego.Api.Models
+﻿using Lego.Api.Models.Series;
+using Lego.Api.Models.SetPiece;
+using Lego.Api.Models.Theme;
+
+namespace Lego.Api.Models.Set
 {
     /// <summary>
-    /// A Lego set with a list of missing pieces
+    /// A Lego set
     /// </summary>
-    public class SetWithMissingPiecesDto
+    public class SetDto
     {
         /// <summary>
         /// The id of the set
@@ -51,19 +55,19 @@
         public bool HasBox { get; set; }
 
         /// <summary>
-        /// The number of missing pieces
+        /// If the set has missing pieces
         /// </summary>
-        public int? NoOfMissingPieces
+        public bool HasMissingPieces
         {
             get
             {
-                return MissingPieces?.Count;
+                return MissingPieces?.Count != 0;
             }
         }
 
         /// <summary>
         /// A list of the missing pieces
         /// </summary>
-        public ICollection<SetPieceWithPieceDto>? MissingPieces { get; set; } = new List<SetPieceWithPieceDto>();
+        public ICollection<SetPieceDto>? MissingPieces { get; set; } = new List<SetPieceDto>();
     }
 }

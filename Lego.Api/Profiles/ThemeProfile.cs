@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lego.Api.Models.Theme;
 
 namespace Lego.Api.Profiles
 {
@@ -6,9 +7,9 @@ namespace Lego.Api.Profiles
     {
         public ThemeProfile()
         {
-            CreateMap<Entities.Theme, Models.ThemeDto>();
-            CreateMap<Models.ThemeForCreationDto, Entities.Theme>();
-            CreateMap<Models.ThemeForUpdatingDto, Entities.Theme>();
+            CreateMap<Entities.Theme, ThemeDto>();
+            CreateMap<ThemeForCreationDto, Entities.Theme>();
+            CreateMap<ThemeForUpdatingDto, Entities.Theme>();
         }
     }
 }

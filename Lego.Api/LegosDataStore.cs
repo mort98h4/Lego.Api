@@ -1,4 +1,8 @@
-﻿using Lego.Api.Models;
+﻿using Lego.Api.Models.Piece;
+using Lego.Api.Models.Series;
+using Lego.Api.Models.Set;
+using Lego.Api.Models.SetPiece;
+using Lego.Api.Models.Theme;
 
 namespace Lego.Api
 {

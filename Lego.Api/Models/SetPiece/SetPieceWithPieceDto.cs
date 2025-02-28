@@ -1,6 +1,7 @@
 ﻿using Lego.Api.Entities;
+using Lego.Api.Models.Piece;
 
-namespace Lego.Api.Models
+namespace Lego.Api.Models.SetPiece
 {
     /// <summary>
     /// A piece of a Lego set

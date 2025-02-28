@@ -1,18 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lego.Api.Models
+namespace Lego.Api.Models.Theme
 {
     /// <summary>
-    /// A Lego theme for creation
+    /// A Lego theme for updating
     /// </summary>
-    public class ThemeForCreationDto
+    public class ThemeForUpdatingDto
     {
         /// <summary>
         /// The name of the theme
         /// </summary>
-        [Required(ErrorMessage = "You must provide a name")]
         [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
         /// <summary>
         /// The description of the theme

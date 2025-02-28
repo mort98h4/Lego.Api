@@ -1,4 +1,4 @@
-﻿namespace Lego.Api.Models
+﻿namespace Lego.Api.Models.Piece
 {
     /// <summary>
     /// A Lego piece

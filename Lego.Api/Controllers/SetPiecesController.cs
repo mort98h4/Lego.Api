@@ -2,7 +2,7 @@
 using AutoMapper;
 using Lego.Api.Entities;
 using Lego.Api.Helpers;
-using Lego.Api.Models;
+using Lego.Api.Models.SetPiece;
 using Lego.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

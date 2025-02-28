@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lego.Api.Models.SetPiece;
 
 namespace Lego.Api.Profiles
 {
@@ -6,9 +7,9 @@ namespace Lego.Api.Profiles
     {
         public SetPieceProfile()
         {
-            CreateMap<Entities.SetPiece, Models.SetPieceWithPieceDto>();
-            CreateMap<Entities.SetPiece, Models.SetPieceDto>();
-            CreateMap<Models.SetPieceForCreationDto, Entities.SetPiece>();
+            CreateMap<Entities.SetPiece, SetPieceWithPieceDto>();
+            CreateMap<Entities.SetPiece, SetPieceDto>();
+            CreateMap<SetPieceForCreationDto, Entities.SetPiece>();
         }
     }
 }

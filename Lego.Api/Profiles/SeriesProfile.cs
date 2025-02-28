@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lego.Api.Models.Series;
 
 namespace Lego.Api.Profiles
 {
@@ -6,9 +7,9 @@ namespace Lego.Api.Profiles
     {
         public SeriesProfile()
         {
-            CreateMap<Entities.Series, Models.SeriesDto>();
-            CreateMap<Models.SeriesForCreationDto, Entities.Series>();
-            CreateMap<Models.SeriesForUpdatingDto, Entities.Series>();
+            CreateMap<Entities.Series, SeriesDto>();
+            CreateMap<SeriesForCreationDto, Entities.Series>();
+            CreateMap<SeriesForUpdatingDto, Entities.Series>();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lego.Api.Models
+namespace Lego.Api.Models.SetPiece
 {
     public class SetPieceForCreationDto
     {
@@ -10,7 +10,7 @@ namespace Lego.Api.Models
         public int PieceId { get; set; }
 
         [Required]
-        [Range(1, Int32.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int Quantity { get; set; }
     }
 }

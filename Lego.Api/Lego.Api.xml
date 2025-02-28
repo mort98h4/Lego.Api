@@ -34,14 +34,14 @@
             <param name="pieceId">The id of the piece to get</param>
             <returns>A Lego piece</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.PiecesController.CreatePiece(Lego.Api.Models.PieceForCreationDto)">
+        <member name="M:Lego.Api.Controllers.PiecesController.CreatePiece(Lego.Api.Models.Piece.PieceForCreationDto)">
             <summary>
             Create a new Lego piece
             </summary>
             <param name="piece">The piece for creation</param>
             <returns>The newly created piece</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.PiecesController.UpdatePiece(System.Int32,Lego.Api.Models.PieceForUpdatingDto)">
+        <member name="M:Lego.Api.Controllers.PiecesController.UpdatePiece(System.Int32,Lego.Api.Models.Piece.PieceForUpdatingDto)">
             <summary>
             Update a Lego piece
             </summary>
@@ -86,14 +86,14 @@
             <param name="seriesId">The id of the series to get</param>
             <returns>A Lego series</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SeriesController.CreateSeries(Lego.Api.Models.SeriesForCreationDto)">
+        <member name="M:Lego.Api.Controllers.SeriesController.CreateSeries(Lego.Api.Models.Series.SeriesForCreationDto)">
             <summary>
             Create a new Lego series
             </summary>
             <param name="series">The series for creation</param>
             <returns>The newly created series</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SeriesController.UpdateSeries(System.Int32,Lego.Api.Models.SeriesForUpdatingDto)">
+        <member name="M:Lego.Api.Controllers.SeriesController.UpdateSeries(System.Int32,Lego.Api.Models.Series.SeriesForUpdatingDto)">
             <summary>
             Update a Lego series
             </summary>
@@ -139,7 +139,7 @@
             <param name="pieceId">The id of the piece</param>
             <returns>A missing piece of a set</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPieceForSet(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
+        <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPieceForSet(System.Int32,Lego.Api.Models.SetPiece.SetPieceForCreationDto)">
             <summary>
             Create a new missing piece of a specific Lego set 
             </summary>
@@ -179,14 +179,14 @@
             <param name="setId">The id of the set to get</param>
             <returns>A set</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SetsController.CreateSet(Lego.Api.Models.SetForCreationDto)">
+        <member name="M:Lego.Api.Controllers.SetsController.CreateSet(Lego.Api.Models.Set.SetForCreationDto)">
             <summary>
             Create a new Lego set
             </summary>
             <param name="set">The set for creation</param>
             <returns>The newly created set</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SetsController.UpdateSet(System.Int32,Lego.Api.Models.SetForUpdatingDto)">
+        <member name="M:Lego.Api.Controllers.SetsController.UpdateSet(System.Int32,Lego.Api.Models.Set.SetForUpdatingDto)">
             <summary>
             Update a Lego set
             </summary>
@@ -231,14 +231,14 @@
             <param name="themeId">The id of the theme to get</param>
             <returns>A Lego theme</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.ThemesController.CreateTheme(Lego.Api.Models.ThemeForCreationDto)">
+        <member name="M:Lego.Api.Controllers.ThemesController.CreateTheme(Lego.Api.Models.Theme.ThemeForCreationDto)">
             <summary>
             Create a new Lego theme
             </summary>
             <param name="theme">The theme for creation</param>
             <returns>The newly created theme</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.ThemesController.UpdateTheme(System.Int32,Lego.Api.Models.ThemeForUpdatingDto)">
+        <member name="M:Lego.Api.Controllers.ThemesController.UpdateTheme(System.Int32,Lego.Api.Models.Theme.ThemeForUpdatingDto)">
             <summary>
             Update a Lego theme
             </summary>
@@ -391,407 +391,407 @@
         <member name="M:Lego.Api.Migrations.CreateEntityFromSetPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Lego.Api.Models.PieceDto">
+        <member name="T:Lego.Api.Models.Piece.PieceDto">
             <summary>
             A Lego piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceDto.Id">
+        <member name="P:Lego.Api.Models.Piece.PieceDto.Id">
             <summary>
             The id of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceDto.PieceNo">
+        <member name="P:Lego.Api.Models.Piece.PieceDto.PieceNo">
             <summary>
             The part number of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceDto.Color">
+        <member name="P:Lego.Api.Models.Piece.PieceDto.Color">
             <summary>
             The color of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceDto.Description">
+        <member name="P:Lego.Api.Models.Piece.PieceDto.Description">
             <summary>
             The description of the piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.PieceForCreationDto">
+        <member name="T:Lego.Api.Models.Piece.PieceForCreationDto">
             <summary>
             A Lego piece for creation
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForCreationDto.PieceNo">
+        <member name="P:Lego.Api.Models.Piece.PieceForCreationDto.PieceNo">
             <summary>
             The piece number of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForCreationDto.Color">
+        <member name="P:Lego.Api.Models.Piece.PieceForCreationDto.Color">
             <summary>
             The color of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForCreationDto.Description">
+        <member name="P:Lego.Api.Models.Piece.PieceForCreationDto.Description">
             <summary>
             The description of the piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.PieceForUpdatingDto">
+        <member name="T:Lego.Api.Models.Piece.PieceForUpdatingDto">
             <summary>
             A Lego piece for updating
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForUpdatingDto.PieceNo">
+        <member name="P:Lego.Api.Models.Piece.PieceForUpdatingDto.PieceNo">
             <summary>
             The piece number of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForUpdatingDto.Color">
+        <member name="P:Lego.Api.Models.Piece.PieceForUpdatingDto.Color">
             <summary>
             The color of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.PieceForUpdatingDto.Description">
+        <member name="P:Lego.Api.Models.Piece.PieceForUpdatingDto.Description">
             <summary>
             The description of the piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SeriesDto">
+        <member name="T:Lego.Api.Models.Series.SeriesDto">
             <summary>
             A series of Lego sets under a specific theme
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesDto.Id">
+        <member name="P:Lego.Api.Models.Series.SeriesDto.Id">
             <summary>
             The id of the series
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesDto.Name">
+        <member name="P:Lego.Api.Models.Series.SeriesDto.Name">
             <summary>
             The name of the series
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesDto.Description">
+        <member name="P:Lego.Api.Models.Series.SeriesDto.Description">
             <summary>
             The description of the series
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SeriesForCreationDto">
+        <member name="T:Lego.Api.Models.Series.SeriesForCreationDto">
             <summary>
             A Lego series for creation
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesForCreationDto.Name">
+        <member name="P:Lego.Api.Models.Series.SeriesForCreationDto.Name">
             <summary>
             The name of the series
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesForCreationDto.Description">
+        <member name="P:Lego.Api.Models.Series.SeriesForCreationDto.Description">
             <summary>
             The description of the series
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SeriesForUpdatingDto">
+        <member name="T:Lego.Api.Models.Series.SeriesForUpdatingDto">
             <summary>
             A Lego series for updating
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesForUpdatingDto.Name">
+        <member name="P:Lego.Api.Models.Series.SeriesForUpdatingDto.Name">
             <summary>
             The name of the series
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SeriesForUpdatingDto.Description">
+        <member name="P:Lego.Api.Models.Series.SeriesForUpdatingDto.Description">
             <summary>
             The description of the series
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SetDto">
-            <summary>
-            A Lego set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.Id">
-            <summary>
-            The id of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.ModelNo">
-            <summary>
-            The model number of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.Name">
-            <summary>
-            The name of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.Theme">
-            <summary>
-            The theme of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.Series">
-            <summary>
-            The collection of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.NoOfPieces">
-            <summary>
-            The number of pieces included in the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.Description">
-            <summary>
-            The description of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.IsSealed">
-            <summary>
-            If the set is sealed
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.HasBox">
-            <summary>
-            If the set still has it's box
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.HasMissingPieces">
-            <summary>
-            If the set has missing pieces
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetDto.MissingPieces">
-            <summary>
-            A list of the missing pieces
-            </summary>
-        </member>
-        <member name="T:Lego.Api.Models.SetForCreationDto">
-            <summary>
-            A Lego set for creation
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.ModelNo">
-            <summary>
-            The model number of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.Name">
-            <summary>
-            The name of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.ThemeId">
-            <summary>
-            The theme id of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.SeriesId">
-            <summary>
-            The collection id of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.NoOfPieces">
-            <summary>
-            The number of pieces included in the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.Description">
-            <summary>
-            The description of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.IsSealed">
-            <summary>
-            If the set is sealed
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForCreationDto.HasBox">
-            <summary>
-            If the set still has it's box
-            </summary>
-        </member>
-        <member name="T:Lego.Api.Models.SetForUpdatingDto">
-            <summary>
-            A Lego set for updating
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.ModelNo">
-            <summary>
-            The model number of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.Name">
-            <summary>
-            The name of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.ThemeId">
-            <summary>
-            The theme id of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.SeriesId">
-            <summary>
-            The collection id of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.NoOfPieces">
-            <summary>
-            The number of pieces included in the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.Description">
-            <summary>
-            The description of the set
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.IsSealed">
-            <summary>
-            If the set is sealed
-            </summary>
-        </member>
-        <member name="P:Lego.Api.Models.SetForUpdatingDto.HasBox">
-            <summary>
-            If the set still has it's box
-            </summary>
-        </member>
-        <member name="T:Lego.Api.Models.SetPieceDto">
+        <member name="T:Lego.Api.Models.SetPiece.SetPieceDto">
             <summary>
             A piece of a Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetPieceDto.PieceId">
+        <member name="P:Lego.Api.Models.SetPiece.SetPieceDto.PieceId">
             <summary>
             The id of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetPieceDto.Quantity">
+        <member name="P:Lego.Api.Models.SetPiece.SetPieceDto.Quantity">
             <summary>
             The quantity of this type of piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SetPieceWithPieceDto">
+        <member name="T:Lego.Api.Models.SetPiece.SetPieceWithPieceDto">
             <summary>
             A piece of a Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetPieceWithPieceDto.Quantity">
+        <member name="P:Lego.Api.Models.SetPiece.SetPieceWithPieceDto.Quantity">
             <summary>
             The number of this type of piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetPieceWithPieceDto.Piece">
+        <member name="P:Lego.Api.Models.SetPiece.SetPieceWithPieceDto.Piece">
             <summary>
             The piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SetWithMissingPiecesDto">
+        <member name="T:Lego.Api.Models.Set.SetDto">
             <summary>
-            A Lego set with a list of missing pieces
+            A Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Id">
+        <member name="P:Lego.Api.Models.Set.SetDto.Id">
             <summary>
             The id of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.ModelNo">
+        <member name="P:Lego.Api.Models.Set.SetDto.ModelNo">
             <summary>
             The model number of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Name">
+        <member name="P:Lego.Api.Models.Set.SetDto.Name">
             <summary>
             The name of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Theme">
+        <member name="P:Lego.Api.Models.Set.SetDto.Theme">
             <summary>
             The theme of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Series">
+        <member name="P:Lego.Api.Models.Set.SetDto.Series">
             <summary>
             The collection of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.NoOfPieces">
+        <member name="P:Lego.Api.Models.Set.SetDto.NoOfPieces">
             <summary>
             The number of pieces included in the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Description">
+        <member name="P:Lego.Api.Models.Set.SetDto.Description">
             <summary>
             The description of the set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.IsSealed">
+        <member name="P:Lego.Api.Models.Set.SetDto.IsSealed">
             <summary>
             If the set is sealed
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.HasBox">
+        <member name="P:Lego.Api.Models.Set.SetDto.HasBox">
             <summary>
             If the set still has it's box
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.NoOfMissingPieces">
+        <member name="P:Lego.Api.Models.Set.SetDto.HasMissingPieces">
             <summary>
-            The number of missing pieces
+            If the set has missing pieces
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.MissingPieces">
+        <member name="P:Lego.Api.Models.Set.SetDto.MissingPieces">
             <summary>
             A list of the missing pieces
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.ThemeDto">
+        <member name="T:Lego.Api.Models.Set.SetForCreationDto">
+            <summary>
+            A Lego set for creation
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.ThemeId">
+            <summary>
+            The theme id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.SeriesId">
+            <summary>
+            The collection id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.NoOfPieces">
+            <summary>
+            The number of pieces included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.IsSealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForCreationDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.Set.SetForUpdatingDto">
+            <summary>
+            A Lego set for updating
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.ThemeId">
+            <summary>
+            The theme id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.SeriesId">
+            <summary>
+            The collection id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.NoOfPieces">
+            <summary>
+            The number of pieces included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.IsSealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetForUpdatingDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.Set.SetWithMissingPiecesDto">
+            <summary>
+            A Lego set with a list of missing pieces
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.Id">
+            <summary>
+            The id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.Theme">
+            <summary>
+            The theme of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.Series">
+            <summary>
+            The collection of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.NoOfPieces">
+            <summary>
+            The number of pieces included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.IsSealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.NoOfMissingPieces">
+            <summary>
+            The number of missing pieces
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.Set.SetWithMissingPiecesDto.MissingPieces">
+            <summary>
+            A list of the missing pieces
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.Theme.ThemeDto">
             <summary>
             A specific theme of Lego sets 
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeDto.Id">
+        <member name="P:Lego.Api.Models.Theme.ThemeDto.Id">
             <summary>
             The id of the theme
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeDto.Name">
+        <member name="P:Lego.Api.Models.Theme.ThemeDto.Name">
             <summary>
             The name of the theme
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeDto.Description">
+        <member name="P:Lego.Api.Models.Theme.ThemeDto.Description">
             <summary>
             The description of the theme
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.ThemeForCreationDto">
+        <member name="T:Lego.Api.Models.Theme.ThemeForCreationDto">
             <summary>
             A Lego theme for creation
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeForCreationDto.Name">
+        <member name="P:Lego.Api.Models.Theme.ThemeForCreationDto.Name">
             <summary>
             The name of the theme
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeForCreationDto.Description">
+        <member name="P:Lego.Api.Models.Theme.ThemeForCreationDto.Description">
             <summary>
             The description of the theme
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.ThemeForUpdatingDto">
+        <member name="T:Lego.Api.Models.Theme.ThemeForUpdatingDto">
             <summary>
             A Lego theme for updating
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeForUpdatingDto.Name">
+        <member name="P:Lego.Api.Models.Theme.ThemeForUpdatingDto.Name">
             <summary>
             The name of the theme
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.ThemeForUpdatingDto.Description">
+        <member name="P:Lego.Api.Models.Theme.ThemeForUpdatingDto.Description">
             <summary>
             The description of the theme
             </summary>

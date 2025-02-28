@@ -1,18 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lego.Api.Models
+namespace Lego.Api.Models.Series
 {
     /// <summary>
-    /// A Lego series for creation
+    /// A Lego series for updating
     /// </summary>
-    public class SeriesForCreationDto
+    public class SeriesForUpdatingDto
     {
         /// <summary>
         /// The name of the series
         /// </summary>
-        [Required(ErrorMessage = "You must provide a name")]
         [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
         /// <summary>
         /// The description of the series

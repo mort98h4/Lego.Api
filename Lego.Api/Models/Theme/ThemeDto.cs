@@ -1,4 +1,4 @@
-﻿namespace Lego.Api.Models
+﻿namespace Lego.Api.Models.Theme
 {
     /// <summary>
     /// A specific theme of Lego sets 
