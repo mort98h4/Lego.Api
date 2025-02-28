@@ -139,7 +139,7 @@
             <param name="pieceId">The id of the piece</param>
             <returns>A missing piece of a set</returns>
         </member>
-        <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPiece(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
+        <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPieceForSet(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
             <summary>
             Create a new missing piece of a specific Lego set 
             </summary>

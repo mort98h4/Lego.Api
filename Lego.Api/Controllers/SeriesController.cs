@@ -16,6 +16,7 @@ namespace Lego.Api.Controllers
     [Route("api/v{version:apiVersion}/series")]
     [ApiController]
     [ApiVersion(1)]
+    [Produces("application/json")]
     public class SeriesController : ControllerBase
     {
         private readonly ILogger<SeriesController> _logger;

@@ -16,6 +16,7 @@ namespace Lego.Api.Controllers
     [Route("api/v{version:apiVersion}/themes")]
     [ApiController]
     [ApiVersion(1)]
+    [Produces("application/json")]
     public class ThemesController : ControllerBase
     {
         private readonly ILogger<ThemesController> _logger;
