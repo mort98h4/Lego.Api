@@ -7,6 +7,7 @@ namespace Lego.Api.Profiles
         public SetPieceProfile()
         {
             CreateMap<Entities.SetPiece, Models.SetMissingPieceDto>();
+            CreateMap<Entities.SetPiece, Models.SetMissingPieceIdDto>();
         }
     }
 }

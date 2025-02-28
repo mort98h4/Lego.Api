@@ -7,6 +7,7 @@ namespace Lego.Api.Profiles
         public SetProfile()
         {
             CreateMap<Entities.Set, Models.SetDto>();
+            CreateMap<Entities.Set, Models.SetWithMissingPiecesDto>();
             CreateMap<Models.SetForCreationDto, Entities.Set>();
             CreateMap<Models.SetForUpdatingDto, Entities.Set>();
         }
