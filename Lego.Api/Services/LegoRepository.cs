@@ -217,6 +217,11 @@ namespace Lego.Api.Services
             return await _context.Pieces.Where(p => p.Id == pieceId).FirstOrDefaultAsync();
         }
 
+        public async Task<bool> PieceExistsAsync(int pieceId)
+        {
+            return await _context.Pieces.AnyAsync(p => p.Id == pieceId);
+        }
+
         public void CreatePiece(Piece piece)
         {
             _context.Pieces.Add(piece);
