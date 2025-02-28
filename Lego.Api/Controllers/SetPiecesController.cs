@@ -1,10 +1,12 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
 using Lego.Api.Entities;
+using Lego.Api.Helpers;
 using Lego.Api.Models;
 using Lego.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Lego.Api.Controllers
 {
@@ -14,6 +16,7 @@ namespace Lego.Api.Controllers
     [Route("api/v{version:apiVersion}/sets/{setId}")]
     [ApiController]
     [ApiVersion(1)]
+    [Produces("application/json")] // Add this to other controllers
     public class SetPiecesController : ControllerBase
     {
         private readonly ILogger<SetPiecesController> _logger;
@@ -32,6 +35,38 @@ namespace Lego.Api.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _legoRepository = legoRepository ?? throw new ArgumentNullException(nameof(legoRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
+
+        /// <summary>
+        /// Get all missing pieces of a set
+        /// </summary>
+        /// <param name="setId">The id of the set to fetch the missing pieces fróm</param>
+        /// <param name="pageNumber">The page to return</param>
+        /// <param name="pageSize">Number of sets to return</param>
+        /// <returns>A list of missing pieces of a set</returns>
+        [HttpGet("missingPieces")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<SetPieceWithPieceDto>>> GetMissingPiecesForSet(int setId, int pageNumber = 1, int pageSize = Constants.DefaultPageSize)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found when accessing missing pieces.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            if (pageSize > Constants.MaxPageSize)
+            {
+                pageSize = Constants.MaxPageSize;
+            }
+
+            var (setPieceEntities, paginationMetadata) = await _legoRepository.GetSetMissingPieces(setId, pageNumber, pageSize);
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
+
+            return Ok(_mapper.Map<IEnumerable<SetPieceWithPieceDto>>(setPieceEntities));
         }
 
         /// <summary>

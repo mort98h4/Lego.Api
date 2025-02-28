@@ -122,6 +122,15 @@
             <param name="mapper"></param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.GetMissingPiecesForSet(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get all missing pieces of a set
+            </summary>
+            <param name="setId">The id of the set to fetch the missing pieces fróm</param>
+            <param name="pageNumber">The page to return</param>
+            <param name="pageSize">Number of sets to return</param>
+            <returns>A list of missing pieces of a set</returns>
+        </member>
         <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPiece(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
             <summary>
             Create a new missing piece of a specific Lego set 

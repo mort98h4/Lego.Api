@@ -28,6 +28,7 @@ namespace Lego.Api.Services
         void CreatePiece(Piece piece);
         void DeletePiece(Piece piece);
 
+        Task<(IEnumerable<SetPiece>, PaginationMetadata)> GetSetMissingPieces(int setId, int pageNumber, int pageSize);
         Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId);
         void CreateSetMissingPiece(SetPiece setPiece);
 

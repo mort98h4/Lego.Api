@@ -227,6 +227,24 @@ namespace Lego.Api.Services
             _context.Pieces.Remove(piece);
         }
 
+        public async Task<(IEnumerable<SetPiece>, PaginationMetadata)> GetSetMissingPieces(int setId, int pageNumber, int pageSize)
+        {
+            var missingPieces = _context.SetMissingPieces as IQueryable<SetPiece>;
+
+            missingPieces = missingPieces.Where(mp => mp.SetId == setId).Include(mp => mp.Piece);
+
+            var totalItemCount = await missingPieces.CountAsync();
+            var paginationMetadata = new PaginationMetadata(totalItemCount, pageSize, pageNumber);
+
+            var missingPiecesToReturn = await missingPieces
+                .OrderBy(mp => mp.Piece.PieceNo)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (missingPiecesToReturn, paginationMetadata);
+        }
+
         public async Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId)
         {
             var setPieces = _context.SetMissingPieces as IQueryable<SetPiece>;
