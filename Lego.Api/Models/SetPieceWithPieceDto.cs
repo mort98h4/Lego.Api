@@ -3,17 +3,17 @@
 namespace Lego.Api.Models
 {
     /// <summary>
-    /// A missing piece of a Lego set
+    /// A piece of a Lego set
     /// </summary>
-    public class SetMissingPieceDto
+    public class SetPieceWithPieceDto
     {
         /// <summary>
-        /// The number of this type of missing piece
+        /// The number of this type of piece
         /// </summary>
         public int Quantity { get; set; }
 
         /// <summary>
-        /// The missing piece
+        /// The piece
         /// </summary>
         public PieceDto Piece { get; set; } = new PieceDto();
     }
