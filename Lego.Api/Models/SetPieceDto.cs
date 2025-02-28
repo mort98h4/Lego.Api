@@ -3,7 +3,7 @@
     /// <summary>
     /// A piece of a Lego set
     /// </summary>
-    public class SetMissingPieceIdDto
+    public class SetPieceDto
     {
         /// <summary>
         /// The id of the piece

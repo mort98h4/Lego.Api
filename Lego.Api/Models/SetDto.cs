@@ -64,6 +64,6 @@
         /// <summary>
         /// A list of the missing pieces
         /// </summary>
-        public ICollection<SetMissingPieceIdDto>? MissingPieces { get; set; } = new List<SetMissingPieceIdDto>();
+        public ICollection<SetPieceDto>? MissingPieces { get; set; } = new List<SetPieceDto>();
     }
 }
