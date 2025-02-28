@@ -340,16 +340,16 @@
         <member name="M:Lego.Api.Migrations.AddPendingChangesToContextModel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece">
+        <member name="T:Lego.Api.Migrations.CreateEntityFromSetPiece">
             <inheritdoc />
         </member>
-        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lego.Api.Migrations.CreateEntityFromSetPiece.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lego.Api.Migrations.CreateEntityFromSetPiece.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lego.Api.Migrations.AddedSetAndPiecePropertiesToSetPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Lego.Api.Migrations.CreateEntityFromSetPiece.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:Lego.Api.Models.PieceDto">
@@ -522,11 +522,6 @@
             If the set has missing pieces
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetDto.NoOfMissingPieces">
-            <summary>
-            The number of missing pieces
-            </summary>
-        </member>
         <member name="P:Lego.Api.Models.SetDto.MissingPieces">
             <summary>
             A list of the missing pieces
@@ -627,19 +622,84 @@
             A missing piece of a Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetMissingPieceDto.SetId">
+        <member name="P:Lego.Api.Models.SetMissingPieceDto.Quantity">
             <summary>
-            The id of the set
+            The number of this type of missing piece
             </summary>
         </member>
         <member name="P:Lego.Api.Models.SetMissingPieceDto.Piece">
             <summary>
-            The piece that is missing
+            The missing piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetMissingPieceDto.Quantity">
+        <member name="T:Lego.Api.Models.SetMissingPieceIdDto">
             <summary>
-            The number of this type of piece that is missing
+            A missing piece of a Lego set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetMissingPieceIdDto.PieceId">
+            <summary>
+            The id of the missing piece
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetWithMissingPiecesDto">
+            <summary>
+            A Lego set with a list of missing pieces
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Id">
+            <summary>
+            The id of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.ModelNo">
+            <summary>
+            The model number of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Name">
+            <summary>
+            The name of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Theme">
+            <summary>
+            The theme of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Series">
+            <summary>
+            The collection of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.NoOfPieces">
+            <summary>
+            The number of pieces included in the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.Description">
+            <summary>
+            The description of the set
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.IsSealed">
+            <summary>
+            If the set is sealed
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.HasBox">
+            <summary>
+            If the set still has it's box
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.NoOfMissingPieces">
+            <summary>
+            The number of missing pieces
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetWithMissingPiecesDto.MissingPieces">
+            <summary>
+            A list of the missing pieces
             </summary>
         </member>
         <member name="T:Lego.Api.Models.ThemeDto">
