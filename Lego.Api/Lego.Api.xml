@@ -108,6 +108,28 @@
             <param name="seriesId">The id of the series for deletion</param>
             <returns>No content</returns>
         </member>
+        <member name="T:Lego.Api.Controllers.SetPiecesController">
+            <summary>
+            API Controller of set pieces
+            </summary>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.#ctor(Microsoft.Extensions.Logging.ILogger{Lego.Api.Controllers.SetPiecesController},Lego.Api.Services.ILegoRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="legoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPiece(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
+            <summary>
+            Create a new missing piece of a specific Lego set 
+            </summary>
+            <param name="setId">The id of the set has a missing piece</param>
+            <param name="setPiece">The missing piece to add</param>
+            <returns></returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets
@@ -617,29 +639,34 @@
             If the set still has it's box
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SetMissingPieceDto">
+        <member name="T:Lego.Api.Models.SetPieceDto">
             <summary>
-            A missing piece of a Lego set
+            A piece of a Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetMissingPieceDto.Quantity">
+        <member name="P:Lego.Api.Models.SetPieceDto.PieceId">
             <summary>
-            The number of this type of missing piece
+            The id of the piece
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetMissingPieceDto.Piece">
+        <member name="P:Lego.Api.Models.SetPieceDto.Quantity">
             <summary>
-            The missing piece
+            The quantity of this type of piece
             </summary>
         </member>
-        <member name="T:Lego.Api.Models.SetMissingPieceIdDto">
+        <member name="T:Lego.Api.Models.SetPieceWithPieceDto">
             <summary>
-            A missing piece of a Lego set
+            A piece of a Lego set
             </summary>
         </member>
-        <member name="P:Lego.Api.Models.SetMissingPieceIdDto.PieceId">
+        <member name="P:Lego.Api.Models.SetPieceWithPieceDto.Quantity">
             <summary>
-            The id of the missing piece
+            The number of this type of piece
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetPieceWithPieceDto.Piece">
+            <summary>
+            The piece
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SetWithMissingPiecesDto">
