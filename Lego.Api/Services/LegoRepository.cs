@@ -98,11 +98,6 @@ namespace Lego.Api.Services
             _context.Sets.Remove(set);
         }
 
-        public void AddMissingPiece(SetPiece setPiece)
-        {
-            _context.SetMissingPieces.Add(setPiece);
-        }
-
         public async Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize)
         {
             var themes = _context.Themes as IQueryable<Theme>;
@@ -230,6 +225,20 @@ namespace Lego.Api.Services
         public void DeletePiece(Piece piece)
         {
             _context.Pieces.Remove(piece);
+        }
+
+        public async Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId)
+        {
+            var setPieces = _context.SetMissingPieces as IQueryable<SetPiece>;
+            setPieces = setPieces.Where(sp => 
+                sp.SetId == setId &&
+                sp.PieceId == pieceId);
+            return await setPieces.AnyAsync();
+        }
+
+        public void CreateSetMissingPiece(SetPiece setPiece)
+        {
+            _context.SetMissingPieces.Add(setPiece);
         }
 
         public async Task<bool> SaveChangesAsync()

@@ -10,7 +10,6 @@ namespace Lego.Api.Services
         Task<bool> SetExistsAsync(int setId);
         void CreateSet(Set set);
         void DeleteSet(Set set);
-        void AddMissingPiece(SetPiece setPiece);
 
         Task<(IEnumerable<Theme>, PaginationMetadata)> GetThemesAsync(string? searchQuery, int pageNumber, int pageSize);
         Task<Theme?> GetThemeByIdAsync(int themeId);
@@ -28,6 +27,10 @@ namespace Lego.Api.Services
         Task<Piece?> GetPieceByIdAsync(int pieceId);
         void CreatePiece(Piece piece);
         void DeletePiece(Piece piece);
+
+        Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId);
+        void CreateSetMissingPiece(SetPiece setPiece);
+
 
         Task<bool> SaveChangesAsync();
     }
