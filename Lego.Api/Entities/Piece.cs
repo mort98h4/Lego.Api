@@ -21,7 +21,7 @@ namespace Lego.Api.Entities
         [StringLength(200)]
         public string Description { get; set; }
 
-        public ICollection<Set> Sets { get; } = new List<Set>();
+        public ICollection<SetPiece> MissingInSets { get; } = new List<SetPiece>();
 
         //[Required]
         //[Range(1, Int32.MaxValue)]

@@ -5,19 +5,24 @@ namespace Lego.Api.Entities
 {
     public class SetPiece
     {
-        [ForeignKey("SetId")]
-        public Set? Set { get; set; }
-        
         [Required]
         public int SetId { get; set; }
-
-
-        [ForeignKey("PieceId")]
-        public Piece? Piece { get; set; }
 
         [Required]
         public int PieceId { get; set; }
 
         public int Quantity { get; set; }
+
+        [ForeignKey("SetId")]
+        public Set? Set { get; set; }
+
+        [ForeignKey("PieceId")]
+        public Piece? Piece { get; set; }
+
+        public SetPiece(int setId, int pieceId)
+        {
+            SetId = setId;
+            PieceId = pieceId;
+        }
     }
 }

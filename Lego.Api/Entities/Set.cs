@@ -43,7 +43,7 @@ namespace Lego.Api.Entities
         [Range(0, 1)]
         public int HasBox { get; set; }
 
-        public ICollection<Piece> MissingPieces { get; } = new List<Piece>();
+        public ICollection<SetPiece> MissingPieces { get; } = new List<SetPiece>();
 
         public Set(string modelNo, string name, int themeId, int noOfPieces, int isSealed, int hasBox)
         {

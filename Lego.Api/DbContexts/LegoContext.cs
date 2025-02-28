@@ -9,6 +9,7 @@ namespace Lego.Api.DbContexts
         public DbSet<Piece> Pieces { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Series> Series { get; set; }
+        public DbSet<SetPiece> SetMissingPieces { get; set; }
 
         public LegoContext(DbContextOptions<LegoContext> options) : base(options) { }
 
@@ -84,21 +85,7 @@ namespace Lego.Api.DbContexts
                     Id = 1
                 });
 
-            modelBuilder.Entity<Set>()
-                .HasMany(e => e.MissingPieces)
-                .WithMany(e => e.Sets)
-                .UsingEntity<SetPiece>("SetsMissingPieces", j =>
-                {
-                    j.Property(e => e.Quantity).HasDefaultValue(1);
-                    j.HasData(
-                        new SetPiece
-                        {
-                            SetId = 2,
-                            PieceId = 1,
-                            Quantity = 1
-                        }
-                    );
-                });
+            modelBuilder.Entity<SetPiece>().HasKey(e => new { e.SetId, e.PieceId });
         }
     }
 }

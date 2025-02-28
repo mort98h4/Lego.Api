@@ -2,6 +2,7 @@
 using Lego.Api.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lego.Api.Migrations
 {
     [DbContext(typeof(LegoContext))]
-    partial class LegoContextModelSnapshot : ModelSnapshot
+    [Migration("20250227180045_CreateEntityFromSetPiece")]
+    partial class CreateEntityFromSetPiece
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -39,7 +42,7 @@ namespace Lego.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pieces", (string)null);
+                    b.ToTable("Pieces");
 
                     b.HasData(
                         new
@@ -68,7 +71,7 @@ namespace Lego.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Series", (string)null);
+                    b.ToTable("Series");
 
                     b.HasData(
                         new
@@ -126,7 +129,7 @@ namespace Lego.Api.Migrations
 
                     b.HasIndex("ThemeId");
 
-                    b.ToTable("Sets", (string)null);
+                    b.ToTable("Sets");
 
                     b.HasData(
                         new
@@ -181,7 +184,7 @@ namespace Lego.Api.Migrations
 
                     b.HasIndex("PieceId");
 
-                    b.ToTable("SetMissingPieces", (string)null);
+                    b.ToTable("SetMissingPieces");
                 });
 
             modelBuilder.Entity("Lego.Api.Entities.Theme", b =>
@@ -201,7 +204,7 @@ namespace Lego.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Themes", (string)null);
+                    b.ToTable("Themes");
 
                     b.HasData(
                         new
