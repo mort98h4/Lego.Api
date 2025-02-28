@@ -193,5 +193,45 @@ namespace Lego.Api.Controllers
 
             return Ok(updatedSetPiece);
         }
+
+        /// <summary>
+        /// Delete a missing piece of a set
+        /// </summary>
+        /// <param name="setId">The id of the set</param>
+        /// <param name="pieceId">The id of the piece</param>
+        /// <returns>No content</returns>
+        [HttpDelete("missingPieces/{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteMissingPieceForSet(int setId, int pieceId)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found while trying to delete a missing piece with id '{pieceId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            if (!await _legoRepository.PieceExistsAsync(pieceId))
+            {
+                var message = $"Piece with id '{pieceId}' was not found while trying to delete the missing piece of set with id '{setId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var setPieceEntity = await _legoRepository.GetSetMissingPiece(setId, pieceId);
+            if (setPieceEntity == null)
+            {
+                var message = $"Set with id '{setId}' has no missing piece with id '{pieceId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            _legoRepository.DeleteSetMissingPiece(setPieceEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

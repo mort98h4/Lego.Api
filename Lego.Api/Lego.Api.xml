@@ -156,6 +156,14 @@
             <param name="setPiece">The missing piece for updating</param>
             <returns>The updated missing piece of a set</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.DeleteMissingPieceForSet(System.Int32,System.Int32)">
+            <summary>
+            Delete a missing piece of a set
+            </summary>
+            <param name="setId">The id of the set</param>
+            <param name="pieceId">The id of the piece</param>
+            <returns>No content</returns>
+        </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
             API Controller of Lego sets

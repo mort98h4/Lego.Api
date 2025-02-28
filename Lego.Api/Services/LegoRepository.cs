@@ -272,6 +272,11 @@ namespace Lego.Api.Services
             _context.SetMissingPieces.Add(setPiece);
         }
 
+        public void DeleteSetMissingPiece(SetPiece setPiece)
+        {
+            _context.SetMissingPieces.Remove(setPiece);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;

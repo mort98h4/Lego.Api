@@ -33,7 +33,7 @@ namespace Lego.Api.Services
         Task<SetPiece?> GetSetMissingPiece(int setId, int pieceId);
         Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId);
         void CreateSetMissingPiece(SetPiece setPiece);
-
+        void DeleteSetMissingPiece(SetPiece setPiece);
 
         Task<bool> SaveChangesAsync();
     }
