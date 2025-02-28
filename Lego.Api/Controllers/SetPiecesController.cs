@@ -16,7 +16,7 @@ namespace Lego.Api.Controllers
     [Route("api/v{version:apiVersion}/sets/{setId}")]
     [ApiController]
     [ApiVersion(1)]
-    [Produces("application/json")] // Add this to other controllers
+    [Produces("application/json")]
     public class SetPiecesController : ControllerBase
     {
         private readonly ILogger<SetPiecesController> _logger;
@@ -75,7 +75,7 @@ namespace Lego.Api.Controllers
         /// <param name="setId">The id of the set</param>
         /// <param name="pieceId">The id of the piece</param>
         /// <returns>A missing piece of a set</returns>
-        [HttpGet("missingPieces/{pieceId}")]
+        [HttpGet("missingPieces/{pieceId}", Name = "GetMissingPiece")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -109,7 +109,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<SetPieceWithPieceDto>> CreateMissingPiece(int setId, SetPieceForCreationDto setPiece)
+        public async Task<ActionResult<SetPieceWithPieceDto>> CreateMissingPieceForSet(int setId, SetPieceForCreationDto setPiece)
         {
             if (!await _legoRepository.SetExistsAsync(setId))
             {
@@ -141,7 +141,11 @@ namespace Lego.Api.Controllers
 
             var createdMissingPiece = _mapper.Map<SetPieceWithPieceDto>(finalMissingPiece);
 
-            return Created("", createdMissingPiece); // Should be CreatedAtRoute
+            return CreatedAtRoute("GetMissingPiece", new
+            {
+                setId = setId,
+                pieceId = createdMissingPiece.Piece.Id
+            }, createdMissingPiece);
         }
     }
 }
