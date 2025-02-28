@@ -1,0 +1,82 @@
+﻿using Asp.Versioning;
+using AutoMapper;
+using Lego.Api.Entities;
+using Lego.Api.Models;
+using Lego.Api.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Lego.Api.Controllers
+{
+    /// <summary>
+    /// API Controller of set pieces
+    /// </summary>
+    [Route("api/v{version:apiVersion}/sets/{setId}")]
+    [ApiController]
+    [ApiVersion(1)]
+    public class SetPiecesController : ControllerBase
+    {
+        private readonly ILogger<SetPiecesController> _logger;
+        private readonly ILegoRepository _legoRepository;
+        private readonly IMapper _mapper;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="legoRepository"></param>
+        /// <param name="mapper"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public SetPiecesController(ILogger<SetPiecesController> logger, ILegoRepository legoRepository, IMapper mapper)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _legoRepository = legoRepository ?? throw new ArgumentNullException(nameof(legoRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
+
+        /// <summary>
+        /// Create a new missing piece of a specific Lego set 
+        /// </summary>
+        /// <param name="setId">The id of the set has a missing piece</param>
+        /// <param name="setPiece">The missing piece to add</param>
+        /// <returns></returns>
+        [HttpPost("missingPieces")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<SetPieceWithPieceDto>> CreateMissingPiece(int setId, SetPieceForCreationDto setPiece)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found while trying to add a missing piece.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var pieceEntity = await _legoRepository.GetPieceByIdAsync(setPiece.PieceId);
+            if (pieceEntity == null)
+            {
+                var message = $"Piece with id '{setPiece.PieceId}' was not found while trying to add it to missing pieces of set with id '{setId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            if (await _legoRepository.SetMissingPieceExistsAsync(setId, setPiece.PieceId))
+            {
+                var message = $"Set with id '{setId}' already has a missing piece with id '{setPiece.PieceId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 400, "Bad Request");
+            }
+
+            setPiece.SetId = setId;
+            var finalMissingPiece = _mapper.Map<SetPiece>(setPiece);
+
+            _legoRepository.CreateSetMissingPiece(finalMissingPiece);
+            await _legoRepository.SaveChangesAsync();
+
+            var createdMissingPiece = _mapper.Map<SetPieceWithPieceDto>(finalMissingPiece);
+
+            return Created("", createdMissingPiece); // Should be CreatedAtRoute
+        }
+    }
+}
