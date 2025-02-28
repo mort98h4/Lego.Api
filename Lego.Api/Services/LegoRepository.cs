@@ -245,6 +245,14 @@ namespace Lego.Api.Services
             return (missingPiecesToReturn, paginationMetadata);
         }
 
+        public async Task<SetPiece?> GetSetMissingPiece(int setId, int pieceId)
+        {
+            return await _context.SetMissingPieces.Where(mp =>
+                    mp.SetId == setId && mp.PieceId == pieceId)
+                .Include(mp => mp.Piece)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<bool> SetMissingPieceExistsAsync(int setId, int pieceId)
         {
             var setPieces = _context.SetMissingPieces as IQueryable<SetPiece>;

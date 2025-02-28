@@ -70,6 +70,36 @@ namespace Lego.Api.Controllers
         }
 
         /// <summary>
+        /// Get a missing piece of a set
+        /// </summary>
+        /// <param name="setId">The id of the set</param>
+        /// <param name="pieceId">The id of the piece</param>
+        /// <returns>A missing piece of a set</returns>
+        [HttpGet("missingPieces/{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetMissingPieceForSet(int setId, int pieceId)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found when accessing missing pieces.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var setPieceEntity = await _legoRepository.GetSetMissingPiece(setId, pieceId);
+            if (setPieceEntity == null)
+            {
+                var message = $"Piece with id '{pieceId}' was not found when accessing missing pieces of set with id '{setId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            return Ok(_mapper.Map<SetPieceWithPieceDto>(setPieceEntity));
+        }
+
+        /// <summary>
         /// Create a new missing piece of a specific Lego set 
         /// </summary>
         /// <param name="setId">The id of the set has a missing piece</param>

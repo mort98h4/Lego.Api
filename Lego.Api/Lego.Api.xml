@@ -131,6 +131,14 @@
             <param name="pageSize">Number of sets to return</param>
             <returns>A list of missing pieces of a set</returns>
         </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.GetMissingPieceForSet(System.Int32,System.Int32)">
+            <summary>
+            Get a missing piece of a set
+            </summary>
+            <param name="setId">The id of the set</param>
+            <param name="pieceId">The id of the piece</param>
+            <returns>A missing piece of a set</returns>
+        </member>
         <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPiece(System.Int32,Lego.Api.Models.SetPieceForCreationDto)">
             <summary>
             Create a new missing piece of a specific Lego set 
