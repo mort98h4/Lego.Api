@@ -126,7 +126,7 @@
             <summary>
             Get all missing pieces of a set
             </summary>
-            <param name="setId">The id of the set to fetch the missing pieces fróm</param>
+            <param name="setId">The id of the set to fetch the missing pieces from</param>
             <param name="pageNumber">The page to return</param>
             <param name="pageSize">Number of sets to return</param>
             <returns>A list of missing pieces of a set</returns>
@@ -141,11 +141,20 @@
         </member>
         <member name="M:Lego.Api.Controllers.SetPiecesController.CreateMissingPieceForSet(System.Int32,Lego.Api.Models.SetPiece.SetPieceForCreationDto)">
             <summary>
-            Create a new missing piece of a specific Lego set 
+            Create a new missing piece of a set 
             </summary>
-            <param name="setId">The id of the set has a missing piece</param>
+            <param name="setId">The id of the set</param>
             <param name="setPiece">The missing piece to add</param>
             <returns></returns>
+        </member>
+        <member name="M:Lego.Api.Controllers.SetPiecesController.UpdateMissingPieceForSet(System.Int32,System.Int32,Lego.Api.Models.SetPiece.SetPieceForUpdatingDto)">
+            <summary>
+            Update a missing piece of a set
+            </summary>
+            <param name="setId">The id of the set</param>
+            <param name="pieceId">The id of the piece</param>
+            <param name="setPiece">The missing piece for updating</param>
+            <returns>The updated missing piece of a set</returns>
         </member>
         <member name="T:Lego.Api.Controllers.SetsController">
             <summary>
@@ -519,6 +528,16 @@
         <member name="P:Lego.Api.Models.SetPiece.SetPieceDto.Quantity">
             <summary>
             The quantity of this type of piece
+            </summary>
+        </member>
+        <member name="T:Lego.Api.Models.SetPiece.SetPieceForUpdatingDto">
+            <summary>
+            A piece for updating of a Lego set 
+            </summary>
+        </member>
+        <member name="P:Lego.Api.Models.SetPiece.SetPieceForUpdatingDto.Quantity">
+            <summary>
+            The quantity of the type of piece of a Lego set
             </summary>
         </member>
         <member name="T:Lego.Api.Models.SetPiece.SetPieceWithPieceDto">

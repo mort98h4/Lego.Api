@@ -10,6 +10,7 @@ namespace Lego.Api.Profiles
             CreateMap<Entities.SetPiece, SetPieceWithPieceDto>();
             CreateMap<Entities.SetPiece, SetPieceDto>();
             CreateMap<SetPieceForCreationDto, Entities.SetPiece>();
+            CreateMap<SetPieceForUpdatingDto, Entities.SetPiece>();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Lego.Api.Controllers
         /// <summary>
         /// Get all missing pieces of a set
         /// </summary>
-        /// <param name="setId">The id of the set to fetch the missing pieces fróm</param>
+        /// <param name="setId">The id of the set to fetch the missing pieces from</param>
         /// <param name="pageNumber">The page to return</param>
         /// <param name="pageSize">Number of sets to return</param>
         /// <returns>A list of missing pieces of a set</returns>
@@ -100,9 +100,9 @@ namespace Lego.Api.Controllers
         }
 
         /// <summary>
-        /// Create a new missing piece of a specific Lego set 
+        /// Create a new missing piece of a set 
         /// </summary>
-        /// <param name="setId">The id of the set has a missing piece</param>
+        /// <param name="setId">The id of the set</param>
         /// <param name="setPiece">The missing piece to add</param>
         /// <returns></returns>
         [HttpPost("missingPieces")]
@@ -146,6 +146,52 @@ namespace Lego.Api.Controllers
                 setId = setId,
                 pieceId = createdMissingPiece.Piece.Id
             }, createdMissingPiece);
+        }
+
+        /// <summary>
+        /// Update a missing piece of a set
+        /// </summary>
+        /// <param name="setId">The id of the set</param>
+        /// <param name="pieceId">The id of the piece</param>
+        /// <param name="setPiece">The missing piece for updating</param>
+        /// <returns>The updated missing piece of a set</returns>
+        [HttpPut("missingPieces/{pieceId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<SetPieceWithPieceDto>> UpdateMissingPieceForSet(int setId, int pieceId,
+            SetPieceForUpdatingDto setPiece)
+        {
+            if (!await _legoRepository.SetExistsAsync(setId))
+            {
+                var message = $"Set with id '{setId}' was not found while trying to update a missing piece with id '{pieceId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            if (!await _legoRepository.PieceExistsAsync(pieceId))
+            {
+                var message = $"Piece with id '{pieceId}' was not found while trying to update the missing piece of set with id '{setId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            var setPieceEntity = await _legoRepository.GetSetMissingPiece(setId, pieceId);
+            if (setPieceEntity == null)
+            {
+                var message = $"Set with id '{setId}' has no missing piece with id '{pieceId}'.";
+                _logger.LogInformation(message);
+                return Problem(message, null, 404, "Not Found");
+            }
+
+            setPiece.Quantity = setPiece.Quantity > 0 ? setPiece.Quantity : setPieceEntity.Quantity;
+
+            var finalSetPiece = _mapper.Map(setPiece, setPieceEntity);
+            await _legoRepository.SaveChangesAsync();
+
+            var updatedSetPiece = _mapper.Map<SetPieceWithPieceDto>(finalSetPiece);
+
+            return Ok(updatedSetPiece);
         }
     }
 }
