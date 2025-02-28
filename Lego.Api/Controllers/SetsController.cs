@@ -76,7 +76,7 @@ namespace Lego.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetSet(int setId)
         {
-            var set = await _legoRepository.GetSetByIdAsync(setId);
+            var (set, missingPieces) = await _legoRepository.GetSetWithMissingPiecesByIdAsync(setId);
 
             if (set == null)
             {
@@ -85,7 +85,7 @@ namespace Lego.Api.Controllers
                 return Problem(message, null, 404, "Not found"); ;
             }
 
-            return Ok(_mapper.Map<SetDto>(set));
+            return Ok(_mapper.Map<SetWithMissingPiecesDto>(set));
         }
 
         /// <summary>
