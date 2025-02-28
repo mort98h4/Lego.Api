@@ -8,23 +8,13 @@ namespace Lego.Api.Models
     public class SetMissingPieceDto
     {
         /// <summary>
-        /// The id of the set
-        /// </summary>
-        public int SetId { get; set; }
-
-        ///// <summary>
-        ///// The id of the piece
-        ///// </summary>
-        //public int PieceId { get; set; }
-
-        /// <summary>
-        /// The piece that is missing
-        /// </summary>
-        public Piece Piece { get; set; }
-
-        /// <summary>
-        /// The number of this type of piece that is missing
+        /// The number of this type of missing piece
         /// </summary>
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// The missing piece
+        /// </summary>
+        public PieceDto Piece { get; set; } = new PieceDto();
     }
 }

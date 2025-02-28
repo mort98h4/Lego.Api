@@ -117,9 +117,12 @@ namespace Lego.Api
                     Description = "The first edition of Hagrid's Hut.",
                     IsSealed = false,
                     HasBox = false,
-                    MissingPieces = new List<PieceDto>()
+                    MissingPieces = new List<SetMissingPieceIdDto>()
                     {
-                        Pieces[0]
+                        new SetMissingPieceIdDto()
+                        {
+                            PieceId = Pieces[0].Id
+                        }
                     }
                 },
                 new SetDto()
